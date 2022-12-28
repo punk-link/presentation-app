@@ -3,7 +3,7 @@ FROM golang:alpine AS builder
 WORKDIR /
 ADD go.mod .
 COPY . .
-RUN go build -o bin/presentation-app.exe -ldflags="-s -w"
+RUN go build -o bin/service-api.exe -ldflags="-s -w"
 
 FROM alpine
 
@@ -15,8 +15,10 @@ ENV PNKL_VAULT_TOKEN=$PNKL_VAULT_TOKEN
 ENV GO_ENVIRONMENT=$GO_ENVIRONMENT
 ENV LOG_LEVEL=$LOG_LEVEL
 
-RUN apk update
+RUN apk update && \
+    apk add --no-cache curl
 WORKDIR /
 COPY --from=builder /bin .
+COPY --from=builder /var /var
 EXPOSE 8080
 CMD ["./presentation-app.exe"]
