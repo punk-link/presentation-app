@@ -1,20 +1,20 @@
 package static
 
 import (
-	releaseServices "main/services/releases"
+	artistServices "main/services/artists"
 
-	base "github.com/punk-link/gin-generic-http-templates"
+	templates "github.com/punk-link/gin-generic-http-templates"
 
 	"github.com/gin-gonic/gin"
 	"github.com/samber/do"
 )
 
 type ReleaseController struct {
-	service *releaseServices.ReleaseService
+	service *artistServices.ReleaseService
 }
 
 func NewReleaseController(injector *do.Injector) (*ReleaseController, error) {
-	service := do.MustInvoke[*releaseServices.ReleaseService](injector)
+	service := do.MustInvoke[*artistServices.ReleaseService](injector)
 
 	return &ReleaseController{
 		service: service,
@@ -25,5 +25,5 @@ func (t *ReleaseController) Get(ctx *gin.Context) {
 	hash := ctx.Param("hash")
 
 	result, err := t.service.Get(hash)
-	base.OkOrNotFoundTemplate(ctx, "release.go.tmpl", result, err)
+	templates.OkOrNotFoundTemplate(ctx, "release.go.tmpl", result, err)
 }

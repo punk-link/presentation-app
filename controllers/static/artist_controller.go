@@ -3,7 +3,7 @@ package static
 import (
 	artistServices "main/services/artists"
 
-	base "github.com/punk-link/gin-generic-http-templates"
+	templates "github.com/punk-link/gin-generic-http-templates"
 
 	"github.com/gin-gonic/gin"
 	"github.com/samber/do"
@@ -25,5 +25,5 @@ func (t *ArtistController) Get(ctx *gin.Context) {
 	hash := ctx.Param("hash")
 
 	result, err := t.service.Get(hash)
-	base.OkOrNotFoundTemplate(ctx, "artist.go.tmpl", result, err)
+	templates.OkOrNotFoundTemplate(ctx, "artist.go.tmpl", result, err)
 }

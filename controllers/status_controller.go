@@ -2,7 +2,7 @@ package controllers
 
 import (
 	"github.com/gin-gonic/gin"
-	base "github.com/punk-link/gin-generic-http-templates"
+	templates "github.com/punk-link/gin-generic-http-templates"
 	"github.com/samber/do"
 )
 
@@ -15,5 +15,5 @@ func NewStatusController(injector *do.Injector) (*StatusController, error) {
 }
 
 func (t *StatusController) CheckHealth(ctx *gin.Context) {
-	base.Ok(ctx, "OK")
+	templates.Ok(ctx, "OK")
 }
