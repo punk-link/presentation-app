@@ -95,13 +95,13 @@ func buildReleaseResult(err error, release *contracts.Release, tracks []artistMo
 	}
 
 	return map[string]any{
-		"PageTitle":    fmt.Sprintf("%s – %s", release.Name, release.ReleaseArtists[0].Name),
-		"ArtistNames":  release.ReleaseArtists,
-		"ReleaseName":  release.Name,
-		"ReleaseDate":  release.ReleaseDate.AsTime().Year(),
-		"ImageDetails": release.ImageDetails,
-		"Tracks":       tracks,
-		//"StreamingPlatforms": platformUrls,
+		"PageTitle":          fmt.Sprintf("%s – %s", release.Name, release.ReleaseArtists[0].Name),
+		"ArtistNames":        release.ReleaseArtists,
+		"ReleaseName":        release.Name,
+		"ReleaseDate":        release.ReleaseDate.AsTime().Year(),
+		"ImageDetails":       release.ImageDetails,
+		"Tracks":             tracks,
+		"StreamingPlatforms": release.PlatformUrls,
 	}, err
 }
 

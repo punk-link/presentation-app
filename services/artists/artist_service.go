@@ -56,13 +56,13 @@ func (t *ArtistService) Get(hash string) (map[string]any, error) {
 	return result, err
 }
 
-func (t *ArtistService) sortReleases(err error, releases []*contracts.Release) ([]*contracts.Release, []*contracts.Release, error) {
+func (t *ArtistService) sortReleases(err error, releases []*contracts.SlimRelease) ([]*contracts.SlimRelease, []*contracts.SlimRelease, error) {
 	if err != nil {
-		return make([]*contracts.Release, 0), make([]*contracts.Release, 0), err
+		return make([]*contracts.SlimRelease, 0), make([]*contracts.SlimRelease, 0), err
 	}
 
-	soleReleases := make([]*contracts.Release, 0)
-	compilations := make([]*contracts.Release, 0)
+	soleReleases := make([]*contracts.SlimRelease, 0)
+	compilations := make([]*contracts.SlimRelease, 0)
 	for _, release := range releases {
 		if release.Type == enums.Compilation {
 			compilations = append(compilations, release)
@@ -81,7 +81,7 @@ func buildArtistCacheKey(hash string) string {
 	return fmt.Sprintf("Artist::%s", hash)
 }
 
-func buildArtistResult(err error, hashCoder *commonServices.HashCoder, artist *contracts.Artist, soleReleases []*contracts.Release, compilations []*contracts.Release) (map[string]any, error) {
+func buildArtistResult(err error, hashCoder *commonServices.HashCoder, artist *contracts.Artist, soleReleases []*contracts.SlimRelease, compilations []*contracts.SlimRelease) (map[string]any, error) {
 	if err != nil {
 		return make(map[string]any, 0), err
 	}
@@ -95,7 +95,7 @@ func buildArtistResult(err error, hashCoder *commonServices.HashCoder, artist *c
 	}, err
 }
 
-func sortReleasesInternal(releases []*contracts.Release) {
+func sortReleasesInternal(releases []*contracts.SlimRelease) {
 	sort.SliceStable(releases, func(i, j int) bool {
 		return releases[i].ReleaseDate.AsTime().After(releases[j].ReleaseDate.AsTime())
 	})
