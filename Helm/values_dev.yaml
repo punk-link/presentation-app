@@ -38,6 +38,8 @@ securityContext: {}
 service:
   type: ClusterIP
   port: 80
+  grpc:
+    port: 15170  
 
 ingress:
   enabled: false
@@ -47,22 +49,22 @@ ingress:
     kubernetes.io/ingress.class: nginx
     ingress.kubernetes.io/force-ssl-redirect: "true" 
   hosts:
-    - host: ss.punk.link
+    - host: punk.link
       paths:
         - path: /
           pathType: Prefix
   tls:
-   - secretName: ss-tls
+   - secretName: presentation-tls
      hosts:
-       - ss.punk.link
+       - punk.link
 
 resources:
   limits:
-    cpu: 5m
-    memory: 56Mi
+    cpu: 50m
+    memory: 256Mi
   requests:
-    cpu: 5m
-    memory: 56Mi
+    cpu: 50m
+    memory: 256Mi
 
 autoscaling:
   enabled: false
@@ -79,5 +81,5 @@ affinity: {}
 
 env:
   GO_ENVIRONMENT: "Development"
-  LOG_LEVEL: "Info"
+  LOG_LEVEL: "Warn"
   PNKL_VAULT_ADDR: "http://vault.dev.svc.cluster.local:8200"  
