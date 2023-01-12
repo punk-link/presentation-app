@@ -3,7 +3,7 @@ FROM golang:alpine AS builder
 WORKDIR /
 ADD go.mod .
 COPY . .
-RUN go build -o bin/presentation-api.exe -ldflags="-s -w"
+RUN go build -o bin/presentation-app.exe -ldflags="-s -w"
 
 FROM alpine
 
