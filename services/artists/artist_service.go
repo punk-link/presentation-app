@@ -44,9 +44,20 @@ func (t *ArtistService) Get(hash string) (map[string]any, error) {
 	}
 
 	id := t.hashCoder.Decode(hash)
+	logger.New().LogWarn("Artist Id: %v", id)
+
 	request := contracts.ArtistRequest{Id: int32(id)}
 
+	isNil := t.grpcClient == nil
+	logger.New().LogWarn("gRPC client is null: %v", isNil)
+
 	artist, err := t.grpcClient.GetArtist(context.Background(), &request)
+	if err != nil {
+		logger.New().LogWarn("gRPC err: %v", err)
+	}
+
+	logger.New().LogWarn("gRPC response: %v", artist)
+
 	soleReleases, compilations, err := t.sortReleases(err, artist.Releases)
 	result, err := buildArtistResult(err, t.hashCoder, artist, soleReleases, compilations)
 	if err == nil {
