@@ -20,5 +20,5 @@ RUN apk update && \
 WORKDIR /
 COPY --from=builder /bin .
 COPY --from=builder /var /var
-EXPOSE 8080
+EXPOSE 8080 15170
 CMD ["./presentation-app.exe"]
