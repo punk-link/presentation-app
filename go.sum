@@ -395,6 +395,8 @@ github.com/punk-link/consul-client v1.0.3 h1:o20mpiNN9u5XcEa2UUMyFUbLelk/9op/I+S
 github.com/punk-link/consul-client v1.0.3/go.mod h1:pHNBrFWp1yii8mJLEfcNREwsiNDBZqNAsg8Sh6Szt0Y=
 github.com/punk-link/environment-variable-manager v1.0.2 h1:UX/4axoZTSCai7R4P3oMcjsCTfgwA0NhzH6gi9toymc=
 github.com/punk-link/environment-variable-manager v1.0.2/go.mod h1:PfA0QpU1F5IfCUcp00S84PQ1I1BbES58P/rLabx8d4M=
+github.com/punk-link/environment-variable-manager v1.0.3 h1:NeoZ+W6RLYYnfXS85kvT1dx9K4Im7eZU1Z8EyBeK/v4=
+github.com/punk-link/environment-variable-manager v1.0.3/go.mod h1:PfA0QpU1F5IfCUcp00S84PQ1I1BbES58P/rLabx8d4M=
 github.com/punk-link/gin-generic-http-templates v1.0.0 h1:s3I1VdSv6D5fuBxKC+EuJdWScewtpHr1mljySVglKhk=
 github.com/punk-link/gin-generic-http-templates v1.0.0/go.mod h1:0aVT3D0dy8ssQ1XMktYBi8fwqoca3gtOxe5si9sI2Tg=
 github.com/punk-link/http-client v1.0.2 h1:1El49/4jBY4kcCyGBTobpUBD4VBi5Hu6OLL6ZW79hdk=

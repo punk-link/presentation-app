@@ -6,7 +6,7 @@
         {{$platformIconName := ""}}
         {{ range $i, $val := .StreamingPlatforms}}
         {{ if le $i 5 }}
-            {{ if eq $val.PlatformName "spotify"}}
+            {{ if eq $val.PlatformId "spotify"}}
                 {{$platformName = "Spotyfy"}}
                 {{$platformIconName = "Spotyfy.png"}}
             {{ end }}

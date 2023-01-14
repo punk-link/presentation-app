@@ -2,7 +2,7 @@ package artists
 
 import (
 	"context"
-	"fmt"
+	"main/helpers"
 	"main/models/artists/enums"
 	converters "main/services/artists/converters"
 	commonServices "main/services/common"
@@ -37,27 +37,16 @@ func NewArtistService(injector *do.Injector) (*ArtistService, error) {
 }
 
 func (t *ArtistService) Get(hash string) (map[string]any, error) {
-	cacheKey := buildArtistCacheKey(hash)
+	cacheKey := helpers.BuildCacheKey("Artist", hash)
 	value, isCached := t.cache.TryGet(cacheKey)
 	if isCached {
 		return value, nil
 	}
 
 	id := t.hashCoder.Decode(hash)
-	logger.New().LogWarn("Artist Id: %v", id)
-
 	request := contracts.ArtistRequest{Id: int32(id)}
 
-	isNil := t.grpcClient == nil
-	logger.New().LogWarn("gRPC client is null: %v", isNil)
-
 	artist, err := t.grpcClient.GetArtist(context.Background(), &request)
-	if err != nil {
-		logger.New().LogWarn("gRPC err: %v", err)
-	}
-
-	logger.New().LogWarn("gRPC response: %v", artist)
-
 	soleReleases, compilations, err := t.sortReleases(err, artist.Releases)
 	result, err := buildArtistResult(err, t.hashCoder, artist, soleReleases, compilations)
 	if err == nil {
@@ -88,22 +77,12 @@ func (t *ArtistService) sortReleases(err error, releases []*contracts.SlimReleas
 	return soleReleases, compilations, err
 }
 
-func buildArtistCacheKey(hash string) string {
-	return fmt.Sprintf("Artist::%s", hash)
-}
-
 func buildArtistResult(err error, hashCoder *commonServices.HashCoder, artist *contracts.Artist, soleReleases []*contracts.SlimRelease, compilations []*contracts.SlimRelease) (map[string]any, error) {
 	if err != nil {
 		return make(map[string]any, 0), err
 	}
 
-	return map[string]any{
-		"PageTitle":         artist.Name,
-		"ArtistName":        artist.Name,
-		"SoleReleaseNumber": len(soleReleases),
-		"CompilationNumber": len(compilations),
-		"Releases":          converters.ToSlimRelease(hashCoder, append(soleReleases, compilations...)),
-	}, err
+	return converters.ToArtistMap(hashCoder, artist, soleReleases, compilations), nil
 }
 
 func sortReleasesInternal(releases []*contracts.SlimRelease) {
