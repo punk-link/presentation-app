@@ -35,6 +35,7 @@ func buildDependencies(logger loggerService.Logger, consul consulClient.ConsulCl
 
 	do.Provide(injector, controllers.NewMetricsController)
 	do.Provide(injector, controllers.NewStatusController)
+	do.Provide(injector, controllers.NewHashController)
 
 	do.Provide(injector, staticControllers.NewArtistController)
 	do.Provide(injector, staticControllers.NewReleaseController)

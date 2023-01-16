@@ -17,6 +17,14 @@ func setupRouts(app *gin.Engine, injector *do.Injector) {
 		app.GET("/health", controller.CheckHealth)
 	})
 
+	registerRoutes(injector, func(controller *controllers.HashController) {
+		app.GET("/hashes/:target/decode", controller.Decode)
+	})
+
+	registerRoutes(injector, func(controller *controllers.HashController) {
+		app.GET("/hashes/:target/encode", controller.Encode)
+	})
+
 	registerRoutes(injector, func(controller *staticControllers.ArtistController) {
 		app.GET("/artists/:hash", controller.Get)
 	})

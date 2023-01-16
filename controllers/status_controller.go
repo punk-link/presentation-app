@@ -10,7 +10,6 @@ type StatusController struct {
 }
 
 func NewStatusController(injector *do.Injector) (*StatusController, error) {
-
 	return &StatusController{}, nil
 }
 
