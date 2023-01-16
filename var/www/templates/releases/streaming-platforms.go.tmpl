@@ -2,27 +2,20 @@
 <div class="lable-music">
     <h3 class="lable-music__title">Listen our music on your<br>favourite streaming platform:</h3>
     <ul class="lable-music__list">
-        {{$platformName := ""}}
-        {{$platformIconName := ""}}
-        {{ range $i, $val := .StreamingPlatforms}}
-        {{ if le $i 5 }}
-            {{ if eq $val.PlatformId "spotify"}}
-                {{$platformName = "Spotyfy"}}
-                {{$platformIconName = "Spotyfy.png"}}
-            {{ end }}
-            <li class="lable-music__list-item" style="background-image:url('/assets/img/{{ $platformIconName }}') ;">
-                <a href="{{ $val.Url }}">{{ $platformName }}</a>
+        {{ $platformName := "" }}
+        {{ $platformIconPath := "" }}
+        {{ range $i, $platform := .StreamingPlatforms}}
+            {{ $platformName = getPlatformName $platform.Id }}
+            {{ $platformIconPath = getPlatformIconPath $platform.Id }}
+            <li class="lable-music__list-item" style="background-image:url('/assets/img/{{ $platformIconPath }}') ;">
+                <a href="{{ $platform.Url }}">{{ $platformName }}</a>
             </li>
         {{ end }}
-        {{ end }}
-        <!--'/assets/img/AppleMusic.png' Apple Music-->
-        <!--'/assets/img/Deezer.png' Deezer-->
-        <!--'/assets/img/YandexMusic.png' Яндекс Музыка-->
-        <!--'/assets/img/YouTube.png' YouTube-->
-        <!--'/assets/img/VKMusic.png' VK Music-->
     </ul>
+    
     {{ if gt (len .StreamingPlatforms) 5 }}
     <button class="lable-music__btn _icon-check-mark">more</button>
     {{ end }}
+    <button class="share-link">share link</button>
 </div>
 {{ end }}

@@ -1,18 +1,18 @@
 {{ define "release-number.go.tmpl" }}
-<div>
-    <div>
-        {{ if gt .SoleReleaseNumber 1 }}
-        {{ .SoleReleaseNumber }} releases
-        {{ else if eq .SoleReleaseNumber 1 }}
+<div class="link">
+    <a href="#" class="link__albums">
+        {{ if eq $.SoleReleaseNumber "1" }}
         1 release
+        {{ else }}
+        {{ .SoleReleaseNumber }} releases
         {{ end }}
-    </div>
-    <div>
-        {{ if gt .CompilationNumber 1 }}
-        {{ .CompilationNumber }} compilations
-        {{ else if eq .CompilationNumber 1 }}
+    </a>
+    <a href="#" class="link__compilations">
+        {{ if eq .CompilationNumber "1" }}
         1 compilation
+        {{ else }}
+        {{ .CompilationNumber }} compilations
         {{ end }}
-    </div>
+    </a>
 </div>
 {{ end }}

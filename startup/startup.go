@@ -2,6 +2,8 @@ package startup
 
 import (
 	startupModels "main/models/startup"
+	templateFunctions "main/template-functions"
+	"text/template"
 
 	"github.com/gin-gonic/gin"
 	consulClient "github.com/punk-link/consul-client"
@@ -18,6 +20,10 @@ func Configure(logger logger.Logger, consul consulClient.ConsulClient, appSecret
 	app.Use(metricsMiddleware(options.ServiceName))
 	app.Use(otelgin.Middleware(options.ServiceName))
 
+	app.SetFuncMap(template.FuncMap{
+		"getPlatformIconPath": templateFunctions.GetPlatformIconPath,
+		"getPlatformName":     templateFunctions.GetPlatformName,
+	})
 	app.LoadHTMLGlob("./var/www/templates/**/*.go.tmpl")
 	app.Static("/assets", "./var/www/assets")
 

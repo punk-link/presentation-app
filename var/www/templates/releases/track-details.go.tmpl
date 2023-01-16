@@ -1,15 +1,15 @@
 {{ define "track-details.go.tmpl" }}
-    <ul class="album__list">
+<ol class="album__list">
     {{ range .Tracks }}
-        <li  class="album__list-item">
-            {{ .Name }}
-            {{ if .IsExplicit }}
-            <span>🅴</span>
-            {{ end }}
-            {{ range .ArtistNames }}
-            <small>{{ . }}</small>
-            {{ end }}
-        </li>
+    <li  class="album__list-item">
+        {{ .Name }}
+        {{ if .IsExplicit }}
+        <span>🅴</span>
+        {{ end }}
+        {{ range .ArtistNames }}
+        <small>{{ . }}</small>
+        {{ end }}
+    </li>
     {{ end }}
-    </ul>
+</ol>
 {{ end }}

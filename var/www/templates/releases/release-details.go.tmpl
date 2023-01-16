@@ -1,11 +1,18 @@
 {{ define "release-details.go.tmpl" }}
 <div class="album">
+    <div class="title">
+        <h1 class="title__title">{{ .ReleaseName }}</h1>
+        <span class="title__year">{{ .ReleaseDate }}</span>
+    </div>
     <div class="album__img">
         <picture>
             <img src="{{ .ImageDetails.Url }}" alt="{{ .ImageDetails.AltText }}">
-            <source srcset="/assets/img/cover.webp" type="image/webp">
+            <source srcset="img/cover.webp" type="image/webp">
         </picture>
     </div>
     {{ template "track-details.go.tmpl" . }}
+    <p class="album__description">
+    {{ .Description }}
+    </p>
 </div>
 {{ end }}
