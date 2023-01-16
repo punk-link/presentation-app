@@ -415,6 +415,8 @@ github.com/punk-link/presentation-contracts v1.0.0 h1:3y0mkPeXP1gW6OQLOLp8alW3bf
 github.com/punk-link/presentation-contracts v1.0.0/go.mod h1:q6/PB009KVB1gtX3J/+Ni5jUQmR7jKk+ngwH8tvc9j8=
 github.com/punk-link/presentation-contracts v1.0.3 h1:RchSdxSPddEUFOTtZeMxw/TFHgKNeoaLFVQY/WQewXM=
 github.com/punk-link/presentation-contracts v1.0.3/go.mod h1:q6/PB009KVB1gtX3J/+Ni5jUQmR7jKk+ngwH8tvc9j8=
+github.com/punk-link/presentation-contracts v1.0.4 h1:cLG3tQB+ef2zlhJDIaCz1OitxuhqMAzMlQoPK+iHn3k=
+github.com/punk-link/presentation-contracts v1.0.4/go.mod h1:q6/PB009KVB1gtX3J/+Ni5jUQmR7jKk+ngwH8tvc9j8=
 github.com/punk-link/vault-client v1.0.0 h1:NAyqrs5s22fhLpOphU12QaMzHxgXWKt5GoXxBxlTPg8=
 github.com/punk-link/vault-client v1.0.0/go.mod h1:zPLCGDIYv2jxl3mM+JDvnCEimLuuk/R6uwrV12pmrUE=
 github.com/rogpeppe/fastuuid v1.2.0/go.mod h1:jVj6XXZzXRy/MSR5jhDC/2q6DgLz+nrA6LYCDYWNEvQ=
@@ -758,6 +760,8 @@ google.golang.org/genproto v0.0.0-20200825200019-8632dd797987 h1:PDIOdWxZ8eRizhK
 google.golang.org/genproto v0.0.0-20200825200019-8632dd797987/go.mod h1:FWY/as6DDZQgahTzZj3fqbO1CbirC29ZNUFHwi0/+no=
 google.golang.org/genproto v0.0.0-20230110181048-76db0878b65f h1:BWUVssLB0HVOSY78gIdvk1dTVYtT1y8SBWtPYuTJ/6w=
 google.golang.org/genproto v0.0.0-20230110181048-76db0878b65f/go.mod h1:RGgjbofJ8xD9Sq1VVhDM1Vok1vRONV+rg+CjzG4SZKM=
+google.golang.org/genproto v0.0.0-20230113154510-dbe35b8444a5 h1:wJT65XLOzhpSPCdAmmKfz94SlmnQzDzjm3Cj9k3fsXY=
+google.golang.org/genproto v0.0.0-20230113154510-dbe35b8444a5/go.mod h1:RGgjbofJ8xD9Sq1VVhDM1Vok1vRONV+rg+CjzG4SZKM=
 google.golang.org/grpc v1.8.0/go.mod h1:yo6s7OP7yaDglbqo1J04qKzAhqBH6lvTonzMVmEdcZw=
 google.golang.org/grpc v1.19.0/go.mod h1:mqu4LbDTu4XGKhr4mRzUsmM4RtVoemTSY81AxZiDr8c=
 google.golang.org/grpc v1.20.1/go.mod h1:10oTOabMzJvdu6/UiuZezV6QK5dSlG84ov/aaiqXj38=
