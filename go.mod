@@ -11,7 +11,7 @@ require (
 	github.com/punk-link/environment-variable-manager v1.0.3
 	github.com/punk-link/gin-generic-http-templates v1.0.0
 	github.com/punk-link/logger v1.0.6
-	github.com/punk-link/presentation-contracts v1.0.4
+	github.com/punk-link/presentation-contracts v1.0.5
 	github.com/punk-link/vault-client v1.0.0
 	github.com/samber/do v1.5.1
 	go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin v0.37.0
