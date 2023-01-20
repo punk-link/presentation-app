@@ -1,6 +1,6 @@
 {{ define "release-details.go.tmpl" }}
 <div class="album">
-       <div class="bg-decor"><picture><source srcset="img/logosback.webp" type="image/webp"><img src="img/logosback.png" alt="декоративный элемент"></picture></div>
+       <div class="bg-decor"><picture><source srcset="/assets/img/logosback.webp" type="image/webp"><img src="/assets/img/logosback.png" alt="декоративный элемент"></picture></div>
 				<div class="link">
 					<a href="#" class="link__albums">3 albums</a>
 					<a href="#" class="link__compilations">1 compilations</a>
@@ -12,7 +12,7 @@
     <div class="album__img">
         <picture>
             <img src="{{ .ImageDetails.Url }}" alt="{{ .ImageDetails.AltText }}">
-            <source srcset="img/cover.webp" type="image/webp">
+            <source srcset="/assets/img/cover.webp" type="image/webp">
         </picture>
     </div>
     {{ template "track-details.go.tmpl" . }}
