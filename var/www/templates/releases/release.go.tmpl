@@ -2,25 +2,13 @@
 <html lang="en">
 {{ template "global/head.go.tmpl" . }}
 <body>
-    <div class="bg-decor">
-        <picture>
-            <source srcset="/assets/img/logosback.webp" type="image/webp">
-            <img src="/assets/img/logosback.png" alt="background art">
-        </picture>
-    </div>
-	<div class="bg-nota">
-		<picture>
-			<source srcset="/assets/img/bg.webp" type="/assets/image/webp">
-			<img src="/assets/img/bg.png" alt="background">
-		</picture>
-	</div>
 	<div class="bg-color"></div>
-	{{ template "tags.go.tmpl" . }}
-	<div class="wrapper __container">
+     <div class="wrapper __container">
         {{ template "global/header.go.tmpl" . }}
 		<main class="page">
 			{{ template "release-details.go.tmpl" . }}
 			{{ template "streaming-platforms.go.tmpl" . }}
+			{{ template "tags.go.tmpl" . }}
 		</main>
 		{{ template "global/footer.go.tmpl" }}
     </div>

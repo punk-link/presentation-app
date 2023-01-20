@@ -13,8 +13,13 @@
         {{ end }}
     </ul>
     {{ if gt (len .StreamingPlatforms) 5 }}
-    <button class="lable-music__btn _icon-check-mark">more</button>
+  
     {{ end }}
-    <button class="share-link">share link</button>
+          <button class="share-link">
+					<picture>
+						<source srcset="img/icons/icon-link.webp" type="image/webp">
+						<img src="img/icons/icon-link.png" alt="share link" />
+					</picture>share link
+        </button>
 </div>
 {{ end }}
