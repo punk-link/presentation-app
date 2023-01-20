@@ -23,7 +23,11 @@
 							<label class="form__label" for="text"></label>
 							<input class="form__input" placeholder="name of platform" name="username" type="text" />
 						</div>
-						<button class="form__button" type="submit"><picture><source srcset="/assets/img/icons/icon-plus.webp" type="/assets/image/webp"><img src="img/icons/icon-plus.png" alt="add platform" /></picture>add platform</button>
+						<button class="form__button" type="submit">
+                           <picture>
+                            <source srcset="/assets/img/icons/icon-plus.webp" type="/assets/image/webp">
+                            <img src="/assets/img/icons/icon-plus.png" alt="add platform" />
+                        </picture>add platform</button>
 					</form>
 				</div>
     {{ if gt (len .StreamingPlatforms) 5 }}
