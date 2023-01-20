@@ -7,7 +7,9 @@
 					</picture>
 				</button>
     {{ range .Tags }}
+    <div class="tags__items">
     <a href="#" class="tags__item">{{ . }}</a>
+    </div>
     {{ end }}
 </div>
 {{ end }}
