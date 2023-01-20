@@ -6,10 +6,10 @@
 						<img src="/assets/img/icons/icon-user.png" alt="user" />
 					</picture>
 				</button>
-    {{ range .Tags }}
     <div class="tags__items">
+    {{ range .Tags }}
     <a href="#" class="tags__item">{{ . }}</a>
-    </div>
     {{ end }}
+    </div>
 </div>
 {{ end }}
