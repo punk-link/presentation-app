@@ -24,13 +24,7 @@ func ToSlimReleaseMaps(hashCoder *commonServices.HashCoder, source []*contracts.
 
 func ToReleaseMap(hashCoder *commonServices.HashCoder, release *contracts.Release) map[string]any {
 	title := fmt.Sprintf("%s – %s", release.Name, release.ReleaseArtists[0].Name)
-
-	releaseArtistIds := make(map[int32]int, len(release.ReleaseArtists))
-	for _, artist := range release.ReleaseArtists {
-		releaseArtistIds[artist.Id] = 0
-	}
-
-	tracks := toTrackMaps(release.Tracks, releaseArtistIds)
+	tracks := toTrackMaps(hashCoder, release.Tracks)
 
 	return map[string]any{
 		"PageTitle":          title,
@@ -57,20 +51,13 @@ func toPlatformUrlMaps(platformUrls []*contracts.PlatformUrl) []map[string]any {
 	return results
 }
 
-func toTrackMaps(tracks []*contracts.Track, artistIds map[int32]int) []map[string]any {
+func toTrackMaps(hashCoder *commonServices.HashCoder, tracks []*contracts.Track) []map[string]any {
 	results := make([]map[string]any, len(tracks))
 	for i, track := range tracks {
-		artistNames := make([]string, 0)
-		for _, artist := range track.Artists {
-			if _, isExist := artistIds[artist.Id]; !isExist {
-				artistNames = append(artistNames, artist.Name)
-			}
-		}
-
 		results[i] = map[string]any{
-			"ArtistNames": artistNames,
-			"IsExplicit":  track.IsExplicit,
-			"Name":        track.Name,
+			"Artists":    ToSlimArtistMaps(hashCoder, track.Artists),
+			"IsExplicit": track.IsExplicit,
+			"Name":       track.Name,
 		}
 	}
 
