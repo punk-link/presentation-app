@@ -1,10 +1,15 @@
 {{ define "release-details.go.tmpl" }}
 <div class="album">
-       <div class="bg-decor"><picture><source srcset="/assets/img/logosback.webp" type="image/webp"><img src="/assets/img/logosback.png" alt="декоративный элемент"></picture></div>
-				<div class="link">
-					<a href="#" class="link__albums">3 albums</a>
-					<a href="#" class="link__compilations">1 compilations</a>
-				</div>
+    <div class="bg-decor">
+        <picture>
+            <source srcset="/assets/img/logosback.webp" type="image/webp">
+            <img src="/assets/img/logosback.png">
+        </picture>
+    </div>
+    <div class="link">
+        <a href="#" class="link__albums">3 albums</a>
+        <a href="#" class="link__compilations">1 compilations</a>
+    </div>
     <div class="title">
         <h1 class="title__title">{{ .ReleaseName }}</h1>
         <span class="title__year">{{ .ReleaseDate }}</span>
