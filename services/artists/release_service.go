@@ -14,23 +14,26 @@ import (
 )
 
 type ReleaseService struct {
-	cache      cacheManager.CacheManager[map[string]any]
-	grpcClient contracts.PresentationClient
-	hashCoder  *commonServices.HashCoder
-	logger     logger.Logger
+	cache       cacheManager.CacheManager[map[string]any]
+	dataService *commonServices.TemplateDataService
+	grpcClient  contracts.PresentationClient
+	hashCoder   *commonServices.HashCoder
+	logger      logger.Logger
 }
 
 func NewReleaseService(injector *do.Injector) (*ReleaseService, error) {
 	cache := do.MustInvoke[cacheManager.CacheManager[map[string]any]](injector)
+	dataService := do.MustInvoke[*commonServices.TemplateDataService](injector)
 	grpcClient := do.MustInvoke[contracts.PresentationClient](injector)
 	hashCoder := do.MustInvoke[*commonServices.HashCoder](injector)
 	logger := do.MustInvoke[logger.Logger](injector)
 
 	return &ReleaseService{
-		cache:      cache,
-		grpcClient: grpcClient,
-		hashCoder:  hashCoder,
-		logger:     logger,
+		cache:       cache,
+		dataService: dataService,
+		grpcClient:  grpcClient,
+		hashCoder:   hashCoder,
+		logger:      logger,
 	}, nil
 }
 
@@ -45,7 +48,7 @@ func (t *ReleaseService) Get(hash string) (map[string]any, error) {
 	request := contracts.ReleaseRequest{Id: int32(id)}
 
 	release, err := t.grpcClient.GetRelease(context.Background(), &request)
-	result, err := buildReleaseResult(err, t.hashCoder, release)
+	result, err := buildReleaseResult(err, t.hashCoder, t.dataService, release)
 	if err == nil {
 		t.cache.Set(cacheKey, result, RELEASE_CACHE_DURATION)
 	}
@@ -53,12 +56,12 @@ func (t *ReleaseService) Get(hash string) (map[string]any, error) {
 	return result, err
 }
 
-func buildReleaseResult(err error, hashCoder *commonServices.HashCoder, release *contracts.Release) (map[string]any, error) {
+func buildReleaseResult(err error, hashCoder *commonServices.HashCoder, dataService *commonServices.TemplateDataService, release *contracts.Release) (map[string]any, error) {
 	if err != nil {
 		return make(map[string]any), err
 	}
 
-	return converters.ToReleaseMap(hashCoder, release), nil
+	return converters.ToReleaseMap(hashCoder, dataService, release), nil
 }
 
 const RELEASE_CACHE_DURATION = time.Hour * 0

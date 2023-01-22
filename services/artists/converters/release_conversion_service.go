@@ -22,12 +22,11 @@ func ToSlimReleaseMaps(hashCoder *commonServices.HashCoder, source []*contracts.
 	return results
 }
 
-func ToReleaseMap(hashCoder *commonServices.HashCoder, release *contracts.Release) map[string]any {
+func ToReleaseMap(hashCoder *commonServices.HashCoder, dataService *commonServices.TemplateDataService, release *contracts.Release) map[string]any {
 	title := fmt.Sprintf("%s – %s", release.Name, release.ReleaseArtists[0].Name)
 	tracks := toTrackMaps(hashCoder, release.Tracks)
 
-	return map[string]any{
-		"PageTitle":          title,
+	return dataService.Enrich(title, map[string]any{
 		"Artists":            ToSlimArtistMaps(hashCoder, release.ReleaseArtists),
 		"Description":        release.Description,
 		"Name":               release.Name,
@@ -36,7 +35,7 @@ func ToReleaseMap(hashCoder *commonServices.HashCoder, release *contracts.Releas
 		"Tags":               release.Tags,
 		"Tracks":             tracks,
 		"StreamingPlatforms": toPlatformUrlMaps(release.PlatformUrls),
-	}
+	})
 }
 
 func toPlatformUrlMaps(platformUrls []*contracts.PlatformUrl) []map[string]any {

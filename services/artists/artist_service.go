@@ -16,23 +16,26 @@ import (
 )
 
 type ArtistService struct {
-	cache      cacheManager.CacheManager[map[string]any]
-	grpcClient contracts.PresentationClient
-	hashCoder  *commonServices.HashCoder
-	logger     logger.Logger
+	cache       cacheManager.CacheManager[map[string]any]
+	dataService *commonServices.TemplateDataService
+	grpcClient  contracts.PresentationClient
+	hashCoder   *commonServices.HashCoder
+	logger      logger.Logger
 }
 
 func NewArtistService(injector *do.Injector) (*ArtistService, error) {
 	cache := do.MustInvoke[cacheManager.CacheManager[map[string]any]](injector)
+	dataService := do.MustInvoke[*commonServices.TemplateDataService](injector)
 	grpcClient := do.MustInvoke[contracts.PresentationClient](injector)
 	hashCoder := do.MustInvoke[*commonServices.HashCoder](injector)
 	logger := do.MustInvoke[logger.Logger](injector)
 
 	return &ArtistService{
-		cache:      cache,
-		grpcClient: grpcClient,
-		hashCoder:  hashCoder,
-		logger:     logger,
+		cache:       cache,
+		dataService: dataService,
+		grpcClient:  grpcClient,
+		hashCoder:   hashCoder,
+		logger:      logger,
 	}, nil
 }
 
@@ -48,7 +51,7 @@ func (t *ArtistService) Get(hash string) (map[string]any, error) {
 
 	artist, err := t.grpcClient.GetArtist(context.Background(), &request)
 	soleReleases, compilations, err := t.sortReleases(err, artist.Releases)
-	result, err := buildArtistResult(err, t.hashCoder, artist, soleReleases, compilations)
+	result, err := buildArtistResult(err, t.hashCoder, t.dataService, artist, soleReleases, compilations)
 	if err == nil {
 		t.cache.Set(cacheKey, result, ARTIST_CACHE_DURATION)
 	}
@@ -77,12 +80,12 @@ func (t *ArtistService) sortReleases(err error, releases []*contracts.SlimReleas
 	return soleReleases, compilations, err
 }
 
-func buildArtistResult(err error, hashCoder *commonServices.HashCoder, artist *contracts.Artist, soleReleases []*contracts.SlimRelease, compilations []*contracts.SlimRelease) (map[string]any, error) {
+func buildArtistResult(err error, hashCoder *commonServices.HashCoder, dataService *commonServices.TemplateDataService, artist *contracts.Artist, soleReleases []*contracts.SlimRelease, compilations []*contracts.SlimRelease) (map[string]any, error) {
 	if err != nil {
 		return make(map[string]any, 0), err
 	}
 
-	return converters.ToArtistMap(hashCoder, artist, soleReleases, compilations), nil
+	return converters.ToArtistMap(hashCoder, dataService, artist, soleReleases, compilations), nil
 }
 
 func sortReleasesInternal(releases []*contracts.SlimRelease) {
