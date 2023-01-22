@@ -6,10 +6,7 @@
             <img src="/assets/img/logosback.png">
         </picture>
     </div>
-    <div class="link">
-        <a href="#" class="link__albums">3 albums</a>
-        <a href="#" class="link__compilations">1 compilations</a>
-    </div>
+    {{ template "release-number.go.tmpl" . }}
     <div class="title">
         <h1 class="title__title">{{ .ReleaseName }}</h1>
         <span class="title__year">{{ .ReleaseDate }}</span>
@@ -22,7 +19,7 @@
     </div>
     {{ template "track-details.go.tmpl" . }}
     <p class="album__description">
-    {{ .Description }}
+        {{ .Description }}
     </p>
 </div>
 {{ end }}
