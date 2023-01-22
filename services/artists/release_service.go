@@ -45,7 +45,7 @@ func (t *ReleaseService) Get(hash string) (map[string]any, error) {
 	request := contracts.ReleaseRequest{Id: int32(id)}
 
 	release, err := t.grpcClient.GetRelease(context.Background(), &request)
-	result, err := buildReleaseResult(err, release)
+	result, err := buildReleaseResult(err, t.hashCoder, release)
 	if err == nil {
 		t.cache.Set(cacheKey, result, RELEASE_CACHE_DURATION)
 	}
@@ -53,12 +53,12 @@ func (t *ReleaseService) Get(hash string) (map[string]any, error) {
 	return result, err
 }
 
-func buildReleaseResult(err error, release *contracts.Release) (map[string]any, error) {
+func buildReleaseResult(err error, hashCoder *commonServices.HashCoder, release *contracts.Release) (map[string]any, error) {
 	if err != nil {
 		return make(map[string]any), err
 	}
 
-	return converters.ToReleaseMap(release), nil
+	return converters.ToReleaseMap(hashCoder, release), nil
 }
 
 const RELEASE_CACHE_DURATION = time.Hour * 0

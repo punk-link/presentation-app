@@ -6,10 +6,9 @@
             <img src="/assets/img/logosback.png">
         </picture>
     </div>
-    {{ template "release-number.go.tmpl" . }}
     <div class="title">
-        <h1 class="title__title">{{ .ReleaseName }}</h1>
-        <span class="title__year">{{ .ReleaseDate }}</span>
+        <h1 class="title__title">{{ .Name }}</h1>
+        <span class="title__year">{{ .Date }}</span>
     </div>
     <div class="album__img">
         <picture>

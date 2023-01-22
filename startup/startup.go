@@ -21,8 +21,10 @@ func Configure(logger logger.Logger, consul consulClient.ConsulClient, appSecret
 	app.Use(otelgin.Middleware(options.ServiceName))
 
 	app.SetFuncMap(template.FuncMap{
+		"convertToInt":        templateFunctions.ConvertToInt,
 		"getPlatformIconPath": templateFunctions.GetPlatformIconPath,
 		"getPlatformName":     templateFunctions.GetPlatformName,
+		"sub":                 templateFunctions.Sub,
 	})
 	app.LoadHTMLGlob("./var/www/templates/**/*.go.tmpl")
 	app.Static("/assets", "./var/www/assets")

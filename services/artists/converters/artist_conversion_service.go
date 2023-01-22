@@ -16,3 +16,19 @@ func ToArtistMap(hashCoder *commonServices.HashCoder, artist *contracts.Artist, 
 		"Compilations":      ToSlimReleaseMaps(hashCoder, compilations),
 	}
 }
+
+func ToSlimArtistMaps(hashCoder *commonServices.HashCoder, artists []*contracts.SlimArtist) []map[string]any {
+	results := make([]map[string]any, len(artists))
+	for i, artist := range artists {
+		results[i] = toSlimArtistMap(hashCoder, artist)
+	}
+
+	return results
+}
+
+func toSlimArtistMap(hashCoder *commonServices.HashCoder, artist *contracts.SlimArtist) map[string]any {
+	return map[string]any{
+		"Slug": hashCoder.Encode(int(artist.Id)),
+		"Name": artist.Name,
+	}
+}
