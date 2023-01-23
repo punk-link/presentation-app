@@ -7,9 +7,8 @@
                 <img src="/assets/img/icons/icon-arrow.png" />
             </picture>
         </a>
-        {{ $len := sub (len .Artists) 1 }}
-        {{ range $i, $artist := .Artists }}
-        <a href="/artists/{{ $artist.Slug }}" class="header__link">{{ $artist.Name }}</a>{{ if ne $len $i }}, {{ end }}
+        {{ range .Artists }}
+        <a href="/artists/{{ .Slug }}" class="header__link">{{ .Name }}</a>
         {{ end }}
         <a class="logo" href="/">
             <picture>

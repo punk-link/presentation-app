@@ -1,6 +1,6 @@
 {{ define "release-number.go.tmpl" }}
 <div class="link">
-    <a href="#" class="link__albums">
+    <a href="/artists/{{ (index .Artists 0).Slug }}?filter=albums" class="link__albums">
         {{ $soleReleaseNumber := convertToInt .SoleReleaseNumber }}
         {{ if eq $soleReleaseNumber 1 }}
         1 release
@@ -8,7 +8,7 @@
         {{ $soleReleaseNumber }} releases
         {{ end }}
     </a>
-    <a href="#" class="link__compilations">
+    <a href="/artists/{{ (index .Artists 0).Slug }}?filter=compilations" class="link__compilations">
         {{ $compilationNumber := convertToInt .CompilationNumber }}
         {{ if eq $compilationNumber 1 }}
         1 compilation

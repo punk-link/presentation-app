@@ -11,7 +11,7 @@ require (
 	github.com/punk-link/environment-variable-manager v1.0.3
 	github.com/punk-link/gin-generic-http-templates v1.0.0
 	github.com/punk-link/logger v1.0.6
-	github.com/punk-link/presentation-contracts v1.0.5
+	github.com/punk-link/presentation-contracts v1.0.6
 	github.com/punk-link/vault-client v1.0.0
 	github.com/samber/do v1.5.1
 	go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin v0.37.0
@@ -96,7 +96,7 @@ require (
 	golang.org/x/sys v0.4.0 // indirect
 	golang.org/x/text v0.6.0 // indirect
 	golang.org/x/time v0.0.0-20220922220347-f3bd1da661af // indirect
-	google.golang.org/genproto v0.0.0-20230113154510-dbe35b8444a5 // indirect
+	google.golang.org/genproto v0.0.0-20230123190316-2c411cf9d197 // indirect
 	google.golang.org/protobuf v1.28.1 // indirect
 	gopkg.in/square/go-jose.v2 v2.5.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect

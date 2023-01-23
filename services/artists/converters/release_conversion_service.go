@@ -35,6 +35,8 @@ func ToReleaseMap(hashCoder *commonServices.HashCoder, dataService *commonServic
 		"Tags":               release.Tags,
 		"Tracks":             tracks,
 		"StreamingPlatforms": toPlatformUrlMaps(release.PlatformUrls),
+		"CompilationNumber":  release.ArtistStats.CompilationNumber,
+		"SoleReleaseNumber":  release.ArtistStats.SoleReleaseNumber,
 	})
 }
 
