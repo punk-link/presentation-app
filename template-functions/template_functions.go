@@ -5,9 +5,9 @@ import platformContracts "github.com/punk-link/platform-contracts"
 func GetPlatformIconPath(platformId string) string {
 	switch platformId {
 	case platformContracts.Spotify:
-		return "Spotyfy.png"
+		return "Spotyfy.webp"
 	case platformContracts.Deezer:
-		return ""
+		return "Deezer.webp"
 	}
 
 	return ""
