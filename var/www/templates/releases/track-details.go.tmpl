@@ -8,7 +8,7 @@
         {{ end }}
         {{ $len := sub (len .Artists) 1 }}
         {{ range $i, $artist := .Artists }}
-        <a href="artists/{{ $artist.Slug }}">{{ $artist.Name }}</a>{{ if lt $i $len }}, {{ end }}
+        <span><a href="artists/{{ $artist.Slug }}">{{ $artist.Name }}</a></span>{{ if lt $i $len }}, {{ end }}
         {{ end }}
     </li>
     {{ end }}
