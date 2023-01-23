@@ -3,9 +3,9 @@
     {{ range .Tracks }}
     <li  class="album__list-item">
         {{ .Name }}
-        {{ if not .IsExplicit }}🄴{{ end }}
-        {{ range $i, $artist := .Artists }}
-        <a href="artists/{{ $artist.Slug }}">{{ $artist.Name }}</a>
+        {{ if .IsExplicit }}🄴{{ end }}
+        {{ range .Artists }}
+        <span><a href="artists/{{ .Slug }}">{{ .Name }}</a></span>
         {{ end }}
     </li>
     {{ end }}

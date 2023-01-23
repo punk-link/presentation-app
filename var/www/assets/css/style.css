@@ -1,15 +1,5 @@
 @charset "UTF-8";
 
-
-
-@font-face {
-  font-family: KronaOne;
-  font-display: swap;
-  src: url("../fonts/KronaOne-Regular.woff2") format("woff2"), url("../fonts/KronaOne-Regular.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-}
-
 @font-face {
   font-family: Montserrat;
   font-display: swap;
@@ -277,7 +267,7 @@ body {
 .page {
   display: -ms-grid;
   display: grid;
-      grid-template-areas: "album music tags" "album music tags" "album music tags";
+      grid-template-areas: "album music sidebar" "album music sidebar" "album music sidebar";
   -ms-grid-columns: 430px 600px 210px;
   grid-template-columns: 430px 600px 210px;
 }
@@ -331,46 +321,6 @@ body {
   transition: all 0.5s ease 0s;
 }
 
-.tags {
-  -ms-grid-row: 1;
-  -ms-grid-row-span: 3;
-  -ms-grid-column: 3;
-  grid-area: tags;
-  position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-.tags__items {
-  position: fixed;
-  bottom: 300px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  padding-left: 26px;
-}
-
-.tags__item {
-  color: #a762ff;
-  font-size: 1rem;
-}
-
-.tags__item::before {
-  content: "#";
-}
-
 .link {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -390,7 +340,8 @@ body {
 .link__compilations {
   width: 40%;
   font-size: 1rem;
-  padding-bottom: 83px;
+  padding-bottom: 10px;
+  margin-bottom: 73px;
   line-height: 1.4;
   -webkit-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
@@ -433,13 +384,35 @@ body {
 }
 
 .album__list {
-  font-size: 1rem;
-  list-style-position: inside;
+  list-style-type: none;
+  counter-reset: num;
+  margin: 0 0 0 45px;
+  padding: 15px 0 5px 0;
+  font-size: 16px;
 }
 
 .album__list-item {
-  margin: 0 20 0 0;
-  padding: 10px 20px 10px 0;
+  position: relative;
+  margin: 0 0 0 0;
+  padding: 0 0 10px 0;
+  line-height: 1.4;
+}
+
+.album__list-item:before {
+  content: counter(num) ".";
+  counter-increment: num;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: -38px;
+  color: rgb(14, 13, 13);
+  text-align: center;
+}
+
+.album__list-item span {
+  display: block;
+  font-size: 12px;
+  font-weight: bold;
 }
 
 .album__description {
@@ -506,6 +479,46 @@ body {
 .lable-music__btn::before {
   padding-right: 20px;
   padding-top: 4px;
+}
+
+.sidebar {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 3;
+  -ms-grid-column: 3;
+  grid-area: sidebar;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.tags {
+  position: absolute;
+  bottom: -75px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding-left: 26px;
+}
+
+.tags__item {
+  color: #a762ff;
+  font-size: 1rem;
+}
+
+.tags__item::before {
+  content: "#";
 }
 
 .form {
