@@ -1,4 +1,5 @@
 {{ define "release-number.go.tmpl" }}
+{{ if eq (len .Artists) 1 }}
 <div class="link">
     <a href="/artists/{{ (index .Artists 0).Slug }}?filter=albums" class="link__albums">
         {{ $soleReleaseNumber := convertToInt .SoleReleaseNumber }}
@@ -17,4 +18,5 @@
         {{ end }}
     </a>
 </div>
+{{ end }}
 {{ end }}
