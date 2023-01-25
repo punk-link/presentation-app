@@ -7,9 +7,9 @@
         </picture>
     </div>
     <div class="album__links">
-       <a href="/artists/{{ (index .Artists 0).Slug }}" class="album__link"></a>
         {{ range .Artists }}
         <a href="/artists/{{ .Slug }}" class="album__link">{{ .Name }}</a>
+        {{ end }}
           </div>
       {{ template "release-number.go.tmpl" . }}
     <div class="title">
