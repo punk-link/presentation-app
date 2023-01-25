@@ -6,6 +6,13 @@
             <img src="/assets/img/logosback.png">
         </picture>
     </div>
+    <div class="album__links">
+       <a href="/artists/{{ (index .Artists 0).Slug }}" class="album__link"></a>
+        {{ range .Artists }}
+        <a href="/artists/{{ .Slug }}" class="album__link">{{ .Name }}</a>
+          </div>
+        {{ end }}
+      {{ template "release-number.go.tmpl" . }}
     <div class="title">
         <h1 class="title__title">{{ .Name }}</h1>
         <span class="title__year">{{ .Date }}</span>
