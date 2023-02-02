@@ -183,7 +183,7 @@ body {
 }
 
 .header__wrap {
-  padding: 63px 30px 33px 30px;
+  padding: 68px 30px 33px 30px;
 }
 
 .logo {
@@ -232,9 +232,9 @@ body {
 
 .social-list__item {
   font-size: 0.75rem;
-  -webkit-transition: all 0.5s ease 0s;
-  -o-transition: all 0.5s ease 0s;
-  transition: all 0.5s ease 0s;
+  -webkit-transition: all 0.1s ease 0s;
+  -o-transition: all 0.1s ease 0s;
+  transition: all 0.1s ease 0s;
   padding-bottom: 8px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -246,9 +246,9 @@ body {
 
 .social-list__item img {
   padding-right: 10px;
-  -webkit-transition: all 0.5s ease 0s;
-  -o-transition: all 0.5s ease 0s;
-  transition: all 0.5s ease 0s;
+  -webkit-transition: all 0.1s ease 0s;
+  -o-transition: all 0.1s ease 0s;
+  transition: all 0.1s ease 0s;
 }
 
 .page {
@@ -257,6 +257,14 @@ body {
       grid-template-areas: "album music sidebar" "album music sidebar" "album music sidebar";
   -ms-grid-columns: 2.2fr 3fr 1fr;
   grid-template-columns: 2.2fr 3fr 1fr;
+}
+
+.hidden {
+  display: none;
+}
+
+.more {
+  position: absolute;
 }
 
 .album {
@@ -277,30 +285,47 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 0 20px 30px 0;
+  padding: 0 60px 30px 0;
+  position: relative;
+}
+
+.no-webp .album__links .dots{
+  background-image: url(../img/icons/dots.png); }
+
+.album__links .dots {
+  display: none;
+  width: 22px;
+  height: 22px;
+  position: absolute;
+  top: 9px;
+  right: 28px;
+  cursor: pointer;
+  z-index: 10;
 }
 
 .album__link {
   font-size: 2rem;
   padding-bottom: 10px;
+  position: relative;
 }
 
-.album__link:first-child {
-  margin-left: -30px;
+.album__link:nth-child(2) {
+  padding-right: 10px;
 }
 
-.no-webp .album__link:first-child::before{
+.no-webp .album__link:nth-child(2)::before{
   background-image: url(../img/icons/icon-arrow.png); }
 
-.album__link:first-child::before {
+.album__link:nth-child(2)::before {
   content: "";
-  background-repeat: no-repeat;
-  background-position: center left;
-  background-size: 22px;
-  padding-left: 30px;
-  -webkit-transition: all 0.5s ease 0s;
-  -o-transition: all 0.5s ease 0s;
-  transition: all 0.5s ease 0s;
+  position: absolute;
+  top: 6px;
+  left: -30px;
+  width: 22px;
+  height: 22px;
+  -webkit-transition: all 0.1s ease-out 0s;
+  -o-transition: all 0.1s ease-out 0s;
+  transition: all 0.1s ease-out 0s;
 }
 
 .album__img {
@@ -387,9 +412,9 @@ body {
   padding-bottom: 10px;
   margin-bottom: 73px;
   line-height: 1.4;
-  -webkit-transition: all 0.3s ease 0s;
-  -o-transition: all 0.3s ease 0s;
-  transition: all 0.3s ease 0s;
+  -webkit-transition: all 0.1s ease-out 0s;
+  -o-transition: all 0.1s ease-out 0s;
+  transition: all 0.1s ease-out 0s;
 }
 
 .title {
@@ -425,32 +450,41 @@ body {
 .lable-music__title {
   font-size: 1rem;
   padding: 0 10px 37px 0;
+  margin-left: -2px;
 }
 
 .lable-music__list-item {
-  cursor: pointer;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-repeat: no-repeat;
-  background-size: 76px;
-  background-position: 30px;
-  padding: 27px 40px 27px 130px;
   margin: 40px 0;
-  -webkit-transition: all 0.3s ease 0s;
-  -o-transition: all 0.3s ease 0s;
-  transition: all 0.3s ease 0s;
+  height: 80px;
+  padding-left: 20px;
+}
+
+.lable-music__list-item img {
+  width: 76px;
+  height: 76px;
+  -webkit-transition: all 0.1s ease-out 0s;
+  -o-transition: all 0.1s ease-out 0s;
+  transition: all 0.1s ease-out 0s;
+  cursor: pointer;
 }
 
 .lable-music__list-item a {
-  font-size: 1.25rem;
+  font-size: 20px;
   font-weight: normal;
-  -webkit-transition: all 0.3s ease 0s;
-  -o-transition: all 0.3s ease 0s;
-  transition: all 0.3s ease 0s;
+  letter-spacing: 0.5px;
+  background-repeat: no-repeat;
+  background-size: 76px;
+  background-position: 1% 50%;
+  padding: 28px 40px 28px 30px;
+  -webkit-transition: all 0.1s ease-out 0s;
+  -o-transition: all 0.1s ease-out 0s;
+  transition: all 0.1s ease-out 0s;
 }
 
 .lable-music__btn {
@@ -491,9 +525,9 @@ body {
           align-items: center;
   padding: 10px 32px 10px 20px;
   margin: 90px 0 100px 0;
-  -webkit-transition: all 0.5s ease 0s;
-  -o-transition: all 0.5s ease 0s;
-  transition: all 0.5s ease 0s;
+  -webkit-transition: all 0.1s ease-out 0s;
+  -o-transition: all 0.1s ease-out 0s;
+  transition: all 0.1s ease-out 0s;
 }
 
 .share-link img {
@@ -620,9 +654,9 @@ body {
   font-size: 1.125rem;
   height: 44px;
   padding: 10px 32px 10px 20px;
-  -webkit-transition: all 0.5s ease 0s;
-  -o-transition: all 0.5s ease 0s;
-  transition: all 0.5s ease 0s;
+  -webkit-transition: all 0.1s ease-out 0s;
+  -o-transition: all 0.1s ease-out 0s;
+  transition: all 0.1s ease-out 0s;
 }
 
 .form__button img {
@@ -650,16 +684,16 @@ body {
 .user {
   position: absolute;
   left: 26px;
-  top: 55px;
+  top: 57px;
   padding: 8px 0 0 0;
 }
 
 .user img {
   width: 20px;
   height: 20px;
-  -webkit-transition: all 0.5s ease 0s;
-  -o-transition: all 0.5s ease 0s;
-  transition: all 0.5s ease 0s;
+  -webkit-transition: all 0.1s ease-out 0s;
+  -o-transition: all 0.1s ease-out 0s;
+  transition: all 0.1s ease-out 0s;
 }
 
 .tags {
@@ -689,66 +723,74 @@ body {
     -webkit-transform: scale(1.1);
         -ms-transform: scale(1.1);
             transform: scale(1.1);
-    -webkit-transition: all 0.5s ease 0s;
-    -o-transition: all 0.5s ease 0s;
-    transition: all 0.5s ease 0s;
+    -webkit-transition: all 0.1s ease 0s;
+    -o-transition: all 0.1s ease 0s;
+    transition: all 0.1s ease 0s;
   }
 
-  .album__link:first-child:hover::before {
-    background-size: 24px;
-    -webkit-transition: all 0.5s ease 0s;
-    -o-transition: all 0.5s ease 0s;
-    transition: all 0.5s ease 0s;
+  .album__link:nth-child(2):hover::before {
+    -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+            transform: scale(1.1);
+    -webkit-transition: all 0.1s ease-out 0s;
+    -o-transition: all 0.1s ease-out 0s;
+    transition: all 0.1s ease-out 0s;
   }
 
   .link__compilations:hover {
-    -webkit-transition: all 0.3s ease 0s;
-    -o-transition: all 0.3s ease 0s;
-    transition: all 0.3s ease 0s;
+    -webkit-transition: all 0.1s ease-out 0s;
+    -o-transition: all 0.1s ease-out 0s;
+    transition: all 0.1s ease-out 0s;
     color: #a762ff;
-  }
-
-  .lable-music__list-item:hover {
-    background-size: 80px;
-    -webkit-transition: all 0.3s ease 0s;
-    -o-transition: all 0.3s ease 0s;
-    transition: all 0.3s ease 0s;
   }
 
   .lable-music__list-item:hover a {
     font-weight: bold;
-    letter-spacing: 0.9px;
-    -webkit-transition: all 0.3s ease 0s;
-    -o-transition: all 0.3s ease 0s;
-    transition: all 0.3s ease 0s;
+    -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+            transform: scale(1.1);
+    -webkit-transition: all 0.1s ease-out 0s;
+    -o-transition: all 0.1s ease-out 0s;
+    transition: all 0.1s ease-out 0s;
+  }
+
+  .lable-music__list-item:hover img {
+    -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+            transform: scale(1.1);
+    -webkit-transition: all 0.1s ease-out 0s;
+    -o-transition: all 0.1s ease-out 0s;
+    transition: all 0.1s ease-out 0s;
   }
 
   .share-link:hover {
     -webkit-transform: scale(1.1);
         -ms-transform: scale(1.1);
             transform: scale(1.1);
-    -webkit-transition: all 0.5s ease 0s;
-    -o-transition: all 0.5s ease 0s;
-    transition: all 0.5s ease 0s;
+    -webkit-transition: all 0.1s ease-out 0s;
+    -o-transition: all 0.1s ease-out 0s;
+    transition: all 0.1s ease-out 0s;
   }
 
   .form__button:hover {
     -webkit-transform: scale(1.1);
         -ms-transform: scale(1.1);
             transform: scale(1.1);
-    -webkit-transition: all 0.5s ease 0s;
-    -o-transition: all 0.5s ease 0s;
-    transition: all 0.5s ease 0s;
+    -webkit-transition: all 0.1s ease-out 0s;
+    -o-transition: all 0.1s ease-out 0s;
+    transition: all 0.1s ease-out 0s;
   }
 
   .user img:hover {
     -webkit-transform: scale(1.1);
         -ms-transform: scale(1.1);
             transform: scale(1.1);
-    -webkit-transition: all 0.5s ease 0s;
-    -o-transition: all 0.5s ease 0s;
-    transition: all 0.5s ease 0s;
+    -webkit-transition: all 0.1s ease-out 0s;
+    -o-transition: all 0.1s ease-out 0s;
+    transition: all 0.1s ease-out 0s;
   }
 }
 
-.webp .album__link:first-child::before{ background-image: url(../img/icons/icon-arrow.webp); }
+.webp .album__links .dots{ background-image: url(../img/icons/dots.webp); }
+
+.webp .album__link:nth-child(2)::before{ background-image: url(../img/icons/icon-arrow.webp); }

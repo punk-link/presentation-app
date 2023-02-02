@@ -7,6 +7,7 @@
         </picture>
     </div>
     <div class="album__links">
+    <span class="dots"></span>
         {{ range .Artists }}
         <a href="/artists/{{ .Slug }}" class="album__link">{{ .Name }}</a>
         {{ end }}

@@ -13,7 +13,8 @@
         {{ range $i, $platform := .StreamingPlatforms}}
             {{ $platformName = getPlatformName $platform.Id }}
             {{ $platformIconPath = getPlatformIconPath $platform.Id }}
-            <li class="lable-music__list-item" style="background-image:url('/assets/img/{{ $platformIconPath }}') ;">
+            <li class="lable-music__list-item">
+            <img src="/assets/img/{{ $platformIconPath }}" alt="{{ $platformName }}">
                 <a href="{{ $platform.Url }}">{{ $platformName }}</a>
             </li>
         {{ end }}
