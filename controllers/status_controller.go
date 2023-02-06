@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"fmt"
 	commonServices "main/services/common"
 
 	"github.com/gin-gonic/gin"
@@ -22,11 +21,12 @@ func NewStatusController(injector *do.Injector) (*StatusController, error) {
 }
 
 func (t *StatusController) CheckHealth(ctx *gin.Context) {
-	err := t.service.Check()
-	if err != nil {
-		templates.BadRequest(ctx, fmt.Sprintf("Degraded: %v", err))
-		return
-	}
+	// Temporary commented to check network
+	// err := t.service.Check()
+	// if err != nil {
+	// 	templates.BadRequest(ctx, fmt.Sprintf("Degraded: %v", err))
+	// 	return
+	// }
 
 	templates.Ok(ctx, "OK")
 }
