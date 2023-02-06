@@ -30,3 +30,7 @@ func (t *StatusController) CheckHealth(ctx *gin.Context) {
 
 	templates.Ok(ctx, "OK")
 }
+
+func (t *StatusController) ThrowError(ctx *gin.Context) {
+	panic("test error")
+}

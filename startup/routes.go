@@ -15,13 +15,11 @@ func setupRouts(app *gin.Engine, injector *do.Injector) {
 
 	registerRoutes(injector, func(controller *controllers.StatusController) {
 		app.GET("/health", controller.CheckHealth)
+		app.GET("/error", controller.ThrowError)
 	})
 
 	registerRoutes(injector, func(controller *controllers.HashController) {
 		app.GET("/hashes/:target/decode", controller.Decode)
-	})
-
-	registerRoutes(injector, func(controller *controllers.HashController) {
 		app.GET("/hashes/:target/encode", controller.Encode)
 	})
 
