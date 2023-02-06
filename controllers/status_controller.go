@@ -1,29 +1,28 @@
 package controllers
 
 import (
-	"context"
 	"fmt"
+	commonServices "main/services/common"
 
 	"github.com/gin-gonic/gin"
 	templates "github.com/punk-link/gin-generic-http-templates"
-	contracts "github.com/punk-link/presentation-contracts"
 	"github.com/samber/do"
 )
 
 type StatusController struct {
-	grpcClient contracts.PresentationClient
+	service *commonServices.HealthCheckService
 }
 
 func NewStatusController(injector *do.Injector) (*StatusController, error) {
-	grpcClient := do.MustInvoke[contracts.PresentationClient](injector)
+	service := do.MustInvoke[*commonServices.HealthCheckService](injector)
 
 	return &StatusController{
-		grpcClient: grpcClient,
+		service: service,
 	}, nil
 }
 
 func (t *StatusController) CheckHealth(ctx *gin.Context) {
-	_, err := t.grpcClient.CheckHealth(context.Background(), &contracts.HealthCheckRequest{})
+	err := t.service.Check()
 	if err != nil {
 		templates.BadRequest(ctx, fmt.Sprintf("Degraded: %v", err))
 		return

@@ -31,6 +31,8 @@ func buildDependencies(logger loggerService.Logger, consul consulClient.ConsulCl
 
 	do.Provide(injector, commonServices.NewHashCoder)
 	do.Provide(injector, commonServices.NewTemplateDataService)
+	do.Provide(injector, commonServices.NewHealthCheckService)
+
 	do.Provide(injector, artistServices.NewArtistService)
 	do.Provide(injector, artistServices.NewReleaseService)
 
