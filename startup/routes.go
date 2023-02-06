@@ -25,10 +25,12 @@ func setupRouts(app *gin.Engine, injector *do.Injector) {
 
 	registerRoutes(injector, func(controller *staticControllers.ArtistController) {
 		app.GET("/artists/:hash", controller.Get)
+		app.GET("/a/:hash", controller.Get)
 	})
 
 	registerRoutes(injector, func(controller *staticControllers.ReleaseController) {
 		app.GET("/releases/:hash", controller.Get)
+		app.GET("/r/:hash", controller.Get)
 	})
 }
 
