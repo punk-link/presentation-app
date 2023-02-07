@@ -15,7 +15,6 @@ func setupRouts(app *gin.Engine, injector *do.Injector) {
 
 	registerRoutes(injector, func(controller *controllers.StatusController) {
 		app.GET("/health", controller.CheckHealth)
-		app.GET("/error", controller.ThrowError)
 	})
 
 	registerRoutes(injector, func(controller *controllers.HashController) {
