@@ -55,7 +55,7 @@ ingress:
         - path: /
           pathType: Prefix
   tls:
-   - secretName: presentation-tls
+   - secretName: presentation02-tls
      hosts:
        - punk.link
 
