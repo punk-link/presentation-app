@@ -17,6 +17,8 @@ func Configure(logger logger.Logger, consul consulClient.ConsulClient, appSecret
 	gin.SetMode(options.GinMode)
 	app := gin.Default()
 
+	app.NoRoute(pageNotFoundMiddleware())
+
 	app.Use(metricsMiddleware(options.ServiceName))
 	app.Use(otelgin.Middleware(options.ServiceName))
 

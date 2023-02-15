@@ -4,6 +4,8 @@ import (
 	"github.com/gin-gonic/gin"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/metric/global"
+
+	templates "github.com/punk-link/gin-generic-http-templates"
 )
 
 func metricsMiddleware(instrumentationName string) gin.HandlerFunc {
@@ -23,6 +25,12 @@ func metricsMiddleware(instrumentationName string) gin.HandlerFunc {
 			attribute.Key("status_code").Int(ctx.Writer.Status()),
 		}
 		requestCounter.Add(ctx, 1, attributes...)
+	}
+}
+
+func pageNotFoundMiddleware() gin.HandlerFunc {
+	return func(ctx *gin.Context) {
+		templates.NotFoundTemplate(ctx, "global/404.go.tmpl")
 	}
 }
 

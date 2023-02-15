@@ -25,5 +25,5 @@ func (t *ReleaseController) Get(ctx *gin.Context) {
 	hash := ctx.Param("hash")
 
 	result, err := t.service.Get(hash)
-	templates.OkOrNotFoundTemplate(ctx, "release.go.tmpl", result, err)
+	templates.OkOrNotFoundTemplate(ctx, "release.go.tmpl", "global/404.go.tmpl", result, err)
 }
