@@ -2,9 +2,51 @@
 <html lang="en">
     {{ template "global/head.go.tmpl" . }}
     <body>
-	    <div>
-            {{ .Error }}
-        </div>
+	  	<div class="wrapper __container">
+		<header class="header __container">
+			<div class="header__wrap ">
+				<a class="logo" href="#"><picture><source srcset="img/logo-404.webp" type="image/webp"><img src="img/logo-404.png" alt="logo" /></picture></a>
+			</div>
+		</header>
+		<main class="page">
+			<!-- =======Section album============================ -->
+			<div class="album">
+				<div class="bg-decor"><picture><source srcset="img/logosback.webp" type="image/webp"><img src="img/logosback.png" alt="декоративный элемент"></picture></div>
+
+
+			</div>
+			<!-- ========Section lable-music==================== -->
+			<div class="lable-music nota-404">
+				<div class="bg-nota"><picture><source srcset="img/nota-404.webp" type="image/webp"><img src="img/nota-404.png" alt="декоративный элемент"></picture></div>
+				<div class="bg-404"><picture><source srcset="img/404.webp" type="image/webp"><img src="img/404.png" alt="404"></picture></div>
+				<h1><span>Oops...</span>
+					It seems that this page does not exist</h1>
+				<button>back</button>
+			</div>
+			<!-- =========Section sidebar========================= -->
+			<div class="sidebar">
+				<button class="user"><picture><source srcset="img/icons/icon-user.webp" type="image/webp"><img src="img/icons/icon-user.png" alt="user" /></picture></button>
+
+			</div>
+		</main>
+		<footer class="footer">
+			<div class="footer__wrap">
+				<div class="social-list">
+					<a href="#" class="social-list__item"><picture><source srcset="img/icons/twitter.webp" type="image/webp"><img src="img/icons/twitter.png" alt="twitter" /></picture>we on twitter</a>
+					<a href="#" class="social-list__item"><picture><source srcset="img/icons/fb.webp" type="image/webp"><img src="img/icons/fb.png" alt="facebook" /></picture>we on facebook</a>
+				</div>
+
+				<div class="footer__link">
+					<a href="#">privacy policy</a>
+					<a href="#">terms of condition</a>
+					<a href="#">synonym.fans</a>
+				</div>
+				<a href="#" class="footer__copy">© South Chertanovo Records
+					<span>2020–2022&nbsp;</span><span>| all rights reserved</span>
+				</a>
+			</div>
+		</footer>
+	</div>
         {{ template "global/footer.go.tmpl" }}
         {{ template "global/scripts.go.tmpl" }}
     </body>

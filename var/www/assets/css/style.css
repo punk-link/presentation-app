@@ -382,7 +382,7 @@ body {
   position: absolute;
   width: 335px;
   left: 114px;
-  top: -161px;
+  top: -30px;
   z-index: -3;
 }
 
@@ -438,7 +438,7 @@ body {
   background-color: #f2ffe1;
   position: relative;
   grid-area: music;
-  padding-top: 130px;
+  padding-top: 260px;
   padding-left: 33px;
   z-index: 2;
 }
@@ -718,6 +718,46 @@ body {
   content: "#";
 }
 
+.nota-404 {
+  background: #d9d9d9;
+}
+
+.nota-404 .bg-nota {
+  top: 549px;
+}
+
+.nota-404 h1 {
+  font-size: 16px;
+  color: #9f9f9f;
+  padding-top: 15px;
+  line-height: 46px;
+}
+
+.nota-404 span {
+  font-size: 40px;
+  display: block;
+}
+
+.nota-404 button {
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 22px;
+  color: #ffffff;
+  background: #a762ff;
+  border: 2px solid #a762ff;
+  border-radius: 5px;
+  width: 118px;
+  height: 54px;
+  margin-top: 88px;
+  -webkit-transition: all 0.2s ease 0s;
+  -o-transition: all 0.2s ease 0s;
+  transition: all 0.2s ease 0s;
+}
+
+.bg-404 {
+  width: 355px;
+}
+
 @media (any-hover: hover) and (any-pointer: fine) {
   .social-list__item:hover img {
     -webkit-transform: scale(1.1);
@@ -746,9 +786,6 @@ body {
 
   .lable-music__list-item:hover a {
     font-weight: bold;
-    -webkit-transform: scale(1.1);
-        -ms-transform: scale(1.1);
-            transform: scale(1.1);
     -webkit-transition: all 0.1s ease-out 0s;
     -o-transition: all 0.1s ease-out 0s;
     transition: all 0.1s ease-out 0s;
@@ -788,6 +825,14 @@ body {
     -webkit-transition: all 0.1s ease-out 0s;
     -o-transition: all 0.1s ease-out 0s;
     transition: all 0.1s ease-out 0s;
+  }
+
+  .nota-404 button:hover {
+    background-color: transparent;
+    color: #a762ff;
+    -webkit-transition: all 0.2s ease 0s;
+    -o-transition: all 0.2s ease 0s;
+    transition: all 0.2s ease 0s;
   }
 }
 
