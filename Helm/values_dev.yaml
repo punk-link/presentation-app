@@ -48,13 +48,14 @@ ingress:
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
     kubernetes.io/ingress.class: nginx
     ingress.kubernetes.io/force-ssl-redirect: "true" 
+    kubernetes.io/tls-acme: "true"
   hosts:
     - host: punk.link
       paths:
         - path: /
-          pathType: ImplementationSpecific
+          pathType: Prefix
   tls:
-   - secretName: presentation-tls
+   - secretName: presentation02-tls
      hosts:
        - punk.link
 
