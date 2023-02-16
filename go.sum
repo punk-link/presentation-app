@@ -418,6 +418,8 @@ github.com/punk-link/gin-generic-http-templates v1.0.0 h1:s3I1VdSv6D5fuBxKC+EuJd
 github.com/punk-link/gin-generic-http-templates v1.0.0/go.mod h1:0aVT3D0dy8ssQ1XMktYBi8fwqoca3gtOxe5si9sI2Tg=
 github.com/punk-link/gin-generic-http-templates v1.0.1 h1:setGRN6sft3+nbYsOeyggAKCWKAyDzjnCVV+AbsqTKc=
 github.com/punk-link/gin-generic-http-templates v1.0.1/go.mod h1:0aVT3D0dy8ssQ1XMktYBi8fwqoca3gtOxe5si9sI2Tg=
+github.com/punk-link/gin-generic-http-templates v1.0.2 h1:2OM1GGVpuik6w7tT66XCf6wE1n+jN0HQZXlxchxV5wg=
+github.com/punk-link/gin-generic-http-templates v1.0.2/go.mod h1:0aVT3D0dy8ssQ1XMktYBi8fwqoca3gtOxe5si9sI2Tg=
 github.com/punk-link/http-client v1.0.2 h1:1El49/4jBY4kcCyGBTobpUBD4VBi5Hu6OLL6ZW79hdk=
 github.com/punk-link/http-client v1.0.2/go.mod h1:bRl/Z9ClOxFdwMIla5P7itWl2sT7gTg86JoduuaWBQM=
 github.com/punk-link/logger v1.0.6 h1:U2TtcLlzDeX1W8UdOEVwiX0rmJJFc1AhphQITpk141U=

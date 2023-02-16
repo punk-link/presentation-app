@@ -22,7 +22,7 @@ func ToSlimReleaseMaps(hashCoder *commonServices.HashCoder, source []*contracts.
 	return results
 }
 
-func ToReleaseMap(hashCoder *commonServices.HashCoder, dataService *commonServices.TemplateDataService, release *contracts.Release) map[string]any {
+func ToReleaseMap(hashCoder *commonServices.HashCoder, dataService commonServices.TemplateDataServer, release *contracts.Release) map[string]any {
 	title := fmt.Sprintf("%s – %s", release.Name, release.ReleaseArtists[0].Name)
 	tracks := toTrackMaps(hashCoder, release.Tracks)
 

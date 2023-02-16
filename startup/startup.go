@@ -1,6 +1,7 @@
 package startup
 
 import (
+	"main/middlewares"
 	startupModels "main/models/startup"
 	templateFunctions "main/template-functions"
 	"text/template"
@@ -12,12 +13,13 @@ import (
 )
 
 func Configure(logger logger.Logger, consul consulClient.ConsulClient, appSecrets map[string]any, options *startupModels.StartupOptions) *gin.Engine {
-	diContainer := buildDependencies(logger, consul, appSecrets)
+	injector := buildDependencies(logger, consul, appSecrets)
 
 	gin.SetMode(options.GinMode)
 	app := gin.Default()
 
-	app.NoRoute(pageNotFoundMiddleware())
+	notFoundMiddleware, _ := middlewares.NewNotFoundMiddleware(injector)
+	app.NoRoute(notFoundMiddleware.HandlePageNotFound())
 
 	app.Use(metricsMiddleware(options.ServiceName))
 	app.Use(otelgin.Middleware(options.ServiceName))
@@ -28,12 +30,13 @@ func Configure(logger logger.Logger, consul consulClient.ConsulClient, appSecret
 		"getPlatformName":     templateFunctions.GetPlatformName,
 		"sub":                 templateFunctions.Sub,
 	})
+
 	app.LoadHTMLGlob("./var/www/templates/**/*.go.tmpl")
 	app.Static("/assets", "./var/www/assets")
 
 	initSentry(app, logger, consul, options.EnvironmentName)
 	configureOpenTelemetry(logger, consul, options)
-	setupRouts(app, diContainer)
+	setupRouts(app, injector)
 
 	return app
 }

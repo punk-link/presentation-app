@@ -6,7 +6,7 @@ import (
 	contracts "github.com/punk-link/presentation-contracts"
 )
 
-func ToArtistMap(hashCoder *commonServices.HashCoder, dataService *commonServices.TemplateDataService, artist *contracts.Artist, soleReleases []*contracts.SlimRelease, compilations []*contracts.SlimRelease) map[string]any {
+func ToArtistMap(hashCoder *commonServices.HashCoder, dataService commonServices.TemplateDataServer, artist *contracts.Artist, soleReleases []*contracts.SlimRelease, compilations []*contracts.SlimRelease) map[string]any {
 	return dataService.Enrich(artist.Name, map[string]any{
 		"ArtistName":        artist.Name,
 		"SoleReleaseNumber": len(soleReleases),
