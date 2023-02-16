@@ -4,6 +4,7 @@ import (
 	"fmt"
 	controllers "main/controllers"
 	staticControllers "main/controllers/static"
+	commonModels "main/models/common"
 	artistServices "main/services/artists"
 	commonServices "main/services/common"
 
@@ -28,6 +29,15 @@ func buildDependencies(logger loggerService.Logger, consul consulClient.ConsulCl
 	})
 
 	do.Provide(injector, registerCacheManager[map[string]any]())
+
+	templateDataValue, err := consul.Get("TemplateData")
+	if err != nil {
+		logger.LogFatal(err, "Can't obtain template data: %s", err.Error())
+	}
+	templateData := templateDataValue.(map[string]any)
+	do.ProvideValue(injector, &commonModels.TemplateOptions{
+		ManagementAppEndpoint: templateData["ManagementAppEndpoint"].(string),
+	})
 
 	do.Provide(injector, commonServices.NewHashCoder)
 	do.Provide(injector, commonServices.NewTemplateDataService)
