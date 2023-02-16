@@ -1,0 +1,24 @@
+{{ define "artist-release-number.go.tmpl" }}
+<div class="link">
+    {{ $soleReleaseNumber := convertToInt .SoleReleaseNumber }}
+    {{ if ne $soleReleaseNumber 0 }}
+    <a href="?filter=albums" class="link__albums">
+        {{ if eq $soleReleaseNumber 1 }}
+        1 release
+        {{ else }}
+        {{ $soleReleaseNumber }} releases
+        {{ end }}
+    </a>
+    {{ end }}
+    {{ $compilationNumber := convertToInt .CompilationNumber }}
+    {{ if ne $compilationNumber 0 }}
+    <a href="?filter=compilations" class="link__compilations">
+        {{ if eq $compilationNumber 1 }}
+        1 compilation
+        {{ else }}
+        {{ $compilationNumber }} compilations
+        {{ end }}
+    </a>
+    {{ end }}
+</div>
+{{ end }}

@@ -9,8 +9,8 @@ import (
 func ToArtistMap(hashCoder commonServices.HashCoder, dataService commonServices.TemplateDataServer, artist *contracts.Artist, soleReleases []*contracts.SlimRelease, compilations []*contracts.SlimRelease) map[string]any {
 	return dataService.Enrich(artist.Name, map[string]any{
 		"ArtistName":        artist.Name,
-		"SoleReleaseNumber": len(soleReleases),
-		"CompilationNumber": len(compilations),
+		"SoleReleaseNumber": int32(len(soleReleases)),
+		"CompilationNumber": int32(len(compilations)),
 		"Releases":          ToSlimReleaseMaps(hashCoder, soleReleases),
 		"Compilations":      ToSlimReleaseMaps(hashCoder, compilations),
 	})

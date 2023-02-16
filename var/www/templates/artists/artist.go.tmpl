@@ -5,7 +5,7 @@
 	    <h1>{{ .ArtistName }}</h1>
         {{ template "global/footer.go.tmpl" }}
         <div>
-            {{ template "release-number.go.tmpl" . }}
+            {{ template "artist-release-number.go.tmpl" . }}
         </div>
         <div>
             {{ range .Releases }}
