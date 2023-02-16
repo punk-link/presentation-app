@@ -1,4 +1,4 @@
-package startup
+package middlewares
 
 import (
 	"github.com/gin-gonic/gin"
@@ -6,7 +6,14 @@ import (
 	"go.opentelemetry.io/otel/metric/global"
 )
 
-func metricsMiddleware(instrumentationName string) gin.HandlerFunc {
+type MetricsMiddleware struct {
+}
+
+func NewMetricsMiddleware() MetricsHandler {
+	return &MetricsMiddleware{}
+}
+
+func (t *MetricsMiddleware) HandleMetrics(instrumentationName string) gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		if _exceptionalRoutes[ctx.Request.URL.Path] {
 			ctx.Next()

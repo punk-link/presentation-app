@@ -21,7 +21,9 @@ func Configure(logger logger.Logger, consul consulClient.ConsulClient, appSecret
 	notFoundMiddleware, _ := middlewares.NewNotFoundMiddleware(injector)
 	app.NoRoute(notFoundMiddleware.HandlePageNotFound())
 
-	app.Use(metricsMiddleware(options.ServiceName))
+	metricsMiddleware := middlewares.NewMetricsMiddleware()
+	app.Use(metricsMiddleware.HandleMetrics(options.ServiceName))
+
 	app.Use(otelgin.Middleware(options.ServiceName))
 
 	app.SetFuncMap(template.FuncMap{
