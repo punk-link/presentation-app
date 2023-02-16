@@ -19,15 +19,15 @@ type ArtistService struct {
 	cache       cacheManager.CacheManager[map[string]any]
 	dataService commonServices.TemplateDataServer
 	grpcClient  contracts.PresentationClient
-	hashCoder   *commonServices.HashCoder
+	hashCoder   commonServices.HashCoder
 	logger      logger.Logger
 }
 
-func NewArtistService(injector *do.Injector) (*ArtistService, error) {
+func NewArtistService(injector *do.Injector) (ArtistServer, error) {
 	cache := do.MustInvoke[cacheManager.CacheManager[map[string]any]](injector)
 	dataService := do.MustInvoke[commonServices.TemplateDataServer](injector)
 	grpcClient := do.MustInvoke[contracts.PresentationClient](injector)
-	hashCoder := do.MustInvoke[*commonServices.HashCoder](injector)
+	hashCoder := do.MustInvoke[commonServices.HashCoder](injector)
 	logger := do.MustInvoke[logger.Logger](injector)
 
 	return &ArtistService{
@@ -80,7 +80,7 @@ func (t *ArtistService) sortReleases(err error, releases []*contracts.SlimReleas
 	return soleReleases, compilations, err
 }
 
-func buildArtistResult(err error, hashCoder *commonServices.HashCoder, dataService commonServices.TemplateDataServer, artist *contracts.Artist, soleReleases []*contracts.SlimRelease, compilations []*contracts.SlimRelease) (map[string]any, error) {
+func buildArtistResult(err error, hashCoder commonServices.HashCoder, dataService commonServices.TemplateDataServer, artist *contracts.Artist, soleReleases []*contracts.SlimRelease, compilations []*contracts.SlimRelease) (map[string]any, error) {
 	if err != nil {
 		return make(map[string]any, 0), err
 	}

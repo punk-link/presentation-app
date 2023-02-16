@@ -10,11 +10,11 @@ import (
 )
 
 type ArtistController struct {
-	service *artistServices.ArtistService
+	service artistServices.ArtistServer
 }
 
 func NewArtistController(injector *do.Injector) (*ArtistController, error) {
-	service := do.MustInvoke[*artistServices.ArtistService](injector)
+	service := do.MustInvoke[artistServices.ArtistServer](injector)
 
 	return &ArtistController{
 		service: service,

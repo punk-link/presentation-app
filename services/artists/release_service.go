@@ -17,15 +17,15 @@ type ReleaseService struct {
 	cache       cacheManager.CacheManager[map[string]any]
 	dataService commonServices.TemplateDataServer
 	grpcClient  contracts.PresentationClient
-	hashCoder   *commonServices.HashCoder
+	hashCoder   commonServices.HashCoder
 	logger      logger.Logger
 }
 
-func NewReleaseService(injector *do.Injector) (*ReleaseService, error) {
+func NewReleaseService(injector *do.Injector) (ReleaseServer, error) {
 	cache := do.MustInvoke[cacheManager.CacheManager[map[string]any]](injector)
 	dataService := do.MustInvoke[commonServices.TemplateDataServer](injector)
 	grpcClient := do.MustInvoke[contracts.PresentationClient](injector)
-	hashCoder := do.MustInvoke[*commonServices.HashCoder](injector)
+	hashCoder := do.MustInvoke[commonServices.HashCoder](injector)
 	logger := do.MustInvoke[logger.Logger](injector)
 
 	return &ReleaseService{
@@ -56,7 +56,7 @@ func (t *ReleaseService) Get(hash string) (map[string]any, error) {
 	return result, err
 }
 
-func buildReleaseResult(err error, hashCoder *commonServices.HashCoder, dataService commonServices.TemplateDataServer, release *contracts.Release) (map[string]any, error) {
+func buildReleaseResult(err error, hashCoder commonServices.HashCoder, dataService commonServices.TemplateDataServer, release *contracts.Release) (map[string]any, error) {
 	if err != nil {
 		return make(map[string]any), err
 	}

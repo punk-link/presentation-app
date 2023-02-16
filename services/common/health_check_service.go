@@ -16,7 +16,7 @@ type HealthCheckService struct {
 	mutex      sync.Mutex
 }
 
-func NewHealthCheckService(injector *do.Injector) (*HealthCheckService, error) {
+func NewHealthCheckService(injector *do.Injector) (HealthChecker, error) {
 	grpcClient := do.MustInvoke[contracts.PresentationClient](injector)
 	logger := do.MustInvoke[logger.Logger](injector)
 

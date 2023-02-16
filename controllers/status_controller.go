@@ -10,11 +10,11 @@ import (
 )
 
 type StatusController struct {
-	service *commonServices.HealthCheckService
+	service commonServices.HealthChecker
 }
 
 func NewStatusController(injector *do.Injector) (*StatusController, error) {
-	service := do.MustInvoke[*commonServices.HealthCheckService](injector)
+	service := do.MustInvoke[commonServices.HealthChecker](injector)
 
 	return &StatusController{
 		service: service,

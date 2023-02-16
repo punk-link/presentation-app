@@ -10,11 +10,11 @@ import (
 )
 
 type HashController struct {
-	hashCoder *common.HashCoder
+	hashCoder common.HashCoder
 }
 
 func NewHashController(injector *do.Injector) (*HashController, error) {
-	hashCoder := do.MustInvoke[*common.HashCoder](injector)
+	hashCoder := do.MustInvoke[common.HashCoder](injector)
 
 	return &HashController{
 		hashCoder: hashCoder,

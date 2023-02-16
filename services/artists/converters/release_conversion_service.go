@@ -7,7 +7,7 @@ import (
 	contracts "github.com/punk-link/presentation-contracts"
 )
 
-func ToSlimReleaseMaps(hashCoder *commonServices.HashCoder, source []*contracts.SlimRelease) []map[string]any {
+func ToSlimReleaseMaps(hashCoder commonServices.HashCoder, source []*contracts.SlimRelease) []map[string]any {
 	results := make([]map[string]any, len(source))
 	for i, release := range source {
 		results[i] = map[string]any{
@@ -22,7 +22,7 @@ func ToSlimReleaseMaps(hashCoder *commonServices.HashCoder, source []*contracts.
 	return results
 }
 
-func ToReleaseMap(hashCoder *commonServices.HashCoder, dataService commonServices.TemplateDataServer, release *contracts.Release) map[string]any {
+func ToReleaseMap(hashCoder commonServices.HashCoder, dataService commonServices.TemplateDataServer, release *contracts.Release) map[string]any {
 	title := fmt.Sprintf("%s – %s", release.Name, release.ReleaseArtists[0].Name)
 	tracks := toTrackMaps(hashCoder, release.Tracks)
 
@@ -52,7 +52,7 @@ func toPlatformUrlMaps(platformUrls []*contracts.PlatformUrl) []map[string]any {
 	return results
 }
 
-func toTrackMaps(hashCoder *commonServices.HashCoder, tracks []*contracts.Track) []map[string]any {
+func toTrackMaps(hashCoder commonServices.HashCoder, tracks []*contracts.Track) []map[string]any {
 	results := make([]map[string]any, len(tracks))
 	for i, track := range tracks {
 		results[i] = map[string]any{
