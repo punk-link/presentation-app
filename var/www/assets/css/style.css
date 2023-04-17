@@ -110,6 +110,7 @@ h6 {
 }
 
 body {
+  padding-right: 0 !important;
   line-height: 1.1;
 }
 
@@ -716,6 +717,124 @@ body {
 
 .tags__item::before {
   content: "#";
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(72, 72, 72, 0.6);
+  z-index: 120;
+}
+
+.popup__content {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 820px;
+  height: 567px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+}
+
+.popup__body {
+  height: 100%;
+  padding: 40px;
+  background-position: center right;
+  background-repeat: no-repeat;
+}
+
+.popup__share {
+  display: inline-block;
+  color: #9f9f9f;
+  font-size: 32px;
+  line-height: 1.2;
+  background-position: right 11px;
+  background-repeat: no-repeat;
+  padding-right: 30px;
+  margin-bottom: 100px;
+}
+
+.popup__media {
+  margin-bottom: 66px;
+}
+
+.popup__media span {
+  display: block;
+  margin-bottom: 30px;
+  color: #000;
+}
+
+.popup__media-items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.popup__media-item {
+  display: block;
+  background-position: center right;
+  background-repeat: no-repeat;
+  width: 60px;
+  height: 60px;
+  margin-right: 20px;
+  -webkit-transition: all 0.1s ease-out 0s;
+  -o-transition: all 0.1s ease-out 0s;
+  transition: all 0.1s ease-out 0s;
+}
+
+.popup__media-item:hover {
+  -webkit-transform: scale(1.1);
+      -ms-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-transition: all 0.1s ease-out 0s;
+  -o-transition: all 0.1s ease-out 0s;
+  transition: all 0.1s ease-out 0s;
+}
+
+.popup__link span {
+  display: block;
+  margin-bottom: 27px;
+  color: #000;
+}
+
+.popup__link-text {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.2;
+  word-wrap: break-word;
+  width: 100%;
+  background-color: transparent;
+  cursor: default;
+}
+
+.popup__link button {
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 22px;
+  height: 22px;
+  margin-left: 20px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition: all 0.1s ease-out 0s;
+  -o-transition: all 0.1s ease-out 0s;
+  transition: all 0.1s ease-out 0s;
+}
+
+.popup__link button:hover {
+  -webkit-transform: scale(1.1);
+      -ms-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-transition: all 0.1s ease-out 0s;
+  -o-transition: all 0.1s ease-out 0s;
+  transition: all 0.1s ease-out 0s;
 }
 
 .nota-404 {

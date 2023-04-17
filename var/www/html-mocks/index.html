@@ -5,7 +5,7 @@
     <title>Главная</title>
     <meta charset="UTF-8">
     <meta name="format-detection" content="telephone=no">
-    <link rel="stylesheet" href="css/style.min.css?_v=20230202125557">
+    <link rel="stylesheet" href="css/style.min.css?_v=20230417111611">
     <!-- <link rel="shortcut icon" href="favicon.ico"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -147,13 +147,41 @@
                         </button>
                     </form>
                 </div>
-
-                <button class="share-link">
+                <button class="share-link" data-modal-button="modal-1">
                     <picture>
                         <source srcset="img/icons/icon-link.webp" type="image/webp"><img src="img/icons/icon-link.png"
                             alt="share link" />
                     </picture>share link
                 </button>
+            </div>
+
+            <!-- =============POPUP======================= -->
+            <div class="popup hidden" id="modal-1" data-modal>
+                <div class="popup__content">
+                    <div class="popup__body" style="background-image: url(img/nota-share.png);">
+                        <div class="popup__share" style="background-image: url(img/icons/share.png);">share</div>
+                        <div class="popup__media">
+                            <span>social media</span>
+                            <div class="popup__media-items">
+                                <a href="#" class="popup__media-item facebook"
+                                    style="background-image: url(img/icons/facebook.svg);"></a>
+                                <a href="#" class="popup__media-item instagram"
+                                    style="background-image: url(img/icons/instagram.svg);"></a>
+                                <a href="#" class="popup__media-item twitter"
+                                    style="background-image: url(img/icons/twitter.svg);"></a>
+                                <a href="#" class="popup__media-item vk"
+                                    style="background-image: url(img/icons/vk.svg);"></a>
+                            </div>
+                        </div>
+                        <div class="popup__link">
+                            <span>direct link</span>
+                            <div class="popup__link-text" id="text">https://synonim/album/24576419/track/110546552
+                                <button id="copy" style="background-image: url(img/icons/copy.png);">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- =========Section sidebar========================= -->
             <div class="sidebar">
@@ -197,7 +225,8 @@
             </div>
         </footer>
     </div>
-    <script src="js/app.min.js?_v=20230202125557"></script>
+
+    <script src="js/app.min.js?_v=20230417111611"></script>
 </body>
 
 </html>
