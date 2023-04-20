@@ -13,6 +13,7 @@ func ToArtistMap(hashCoder commonServices.HashCoder, dataService commonServices.
 		"CompilationNumber": int32(len(compilations)),
 		"Releases":          ToSlimReleaseMaps(hashCoder, soleReleases),
 		"Compilations":      ToSlimReleaseMaps(hashCoder, compilations),
+		"SocialNetworks":    toSocialNetworks(artist),
 	})
 }
 
@@ -30,4 +31,14 @@ func toSlimArtistMap(hashCoder commonServices.HashCoder, artist *contracts.SlimA
 		"Slug": hashCoder.Encode(int(artist.Id)),
 		"Name": artist.Name,
 	}
+}
+
+func toSocialNetworks(artist *contracts.Artist) map[string]any {
+	result := make(map[string]any)
+
+	result["facebook"] = "https://www.facebook.com/thesubways/"
+	result["instagram"] = "https://www.instagram.com/thesubways/"
+	result["twitter"] = "https://twitter.com/thesubways"
+
+	return result
 }

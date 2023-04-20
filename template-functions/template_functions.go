@@ -39,3 +39,16 @@ func GetPlatformName(platformId string) string {
 
 	return ""
 }
+
+func GetSocialNetworkIconPath(socialNetworkId string) string {
+	switch socialNetworkId {
+	case "facebook":
+		return "Facebook"
+	case "instagram":
+		return "Instagram"
+	case "twitter":
+		return "Twitter"
+	}
+
+	return socialNetworkId
+}

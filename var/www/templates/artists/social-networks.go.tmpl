@@ -1,0 +1,9 @@
+{{ define "social-networks.go.tmpl" }}
+<ul>
+{{ range $id, $url := .SocialNetworks }}
+    <li>
+        <a href="{{ $url }}">{{ getSocialNetworkIconPath $id }}</a>
+    </li>
+{{ end }}
+</ul>
+{{ end }}
