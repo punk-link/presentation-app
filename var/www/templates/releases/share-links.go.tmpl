@@ -12,15 +12,17 @@
             <div class="popup__media">
                 <span>social media</span>
                 <div class="popup__media-items">
-                    <a href="#" class="popup__media-item facebook" style="background-image: url(/assets/img/icons/facebook.svg);"></a>
-                    <a href="#" class="popup__media-item instagram" style="background-image: url(/assets/img/icons/instagram.svg);"></a>
-                    <a href="#" class="popup__media-item twitter" style="background-image: url(/assets/img/icons/twitter.svg);"></a>
-                    <a href="#" class="popup__media-item vk" style="background-image: url(/assets/img/icons/vk.svg);"></a>
+                    <a href="{{ generateShareLink  .SocialNatworkIds.Facebook .PageUrl .PageTitle }}" class="popup__media-item facebook" style="background-image: url(/assets/img/icons/facebook.svg);"></a>
+                    <!--a href="{{ generateShareLink .SocialNatworkIds.Instagram .PageUrl .PageTitle }}" class="popup__media-item instagram" style="background-image: url(/assets/img/icons/instagram.svg);"></a-->
+                    <a href="{{ generateShareLink .SocialNatworkIds.Telegram .PageUrl .PageTitle }}" class="popup__media-item twitter" style="background-image: url(/assets/img/icons/twitter.svg);"></a>
+                    <a href="{{ generateShareLink .SocialNatworkIds.Twitter .PageUrl .PageTitle }}" class="popup__media-item telegram" style="background-image: url(/assets/img/icons/vk.svg);"></a>
+                    <a href="{{ generateShareLink .SocialNatworkIds.Vk .PageUrl .PageTitle }}" class="popup__media-item vk" style="background-image: url(/assets/img/icons/vk.svg);"></a>
                 </div>
             </div>
             <div class="popup__link">
                 <span>direct link</span>
                 <div class="popup__link-text" id="text">
+                    {{ generateShareLink "" .PageUrl .PageTitle }}
                     <button id="copy" style="background-image: url(/assets/img/icons/copy.png);">
                     </button>
                 </div>
@@ -28,5 +30,4 @@
         </div>
     </div>
 </div>
-<script src="/assets/js/scripts.js"></script>
 {{ end }}

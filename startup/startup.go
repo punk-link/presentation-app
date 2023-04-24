@@ -3,6 +3,7 @@ package startup
 import (
 	"main/middlewares"
 	startupModels "main/models/startup"
+	shareLinksServices "main/services/share-links"
 	templateFunctions "main/template-functions"
 	"text/template"
 
@@ -28,6 +29,7 @@ func Configure(logger logger.Logger, consul consulClient.ConsulClient, appSecret
 
 	app.SetFuncMap(template.FuncMap{
 		"convertToInt":             templateFunctions.ConvertToInt,
+		"generateShareLink":        shareLinksServices.Generate,
 		"getPlatformIconPath":      templateFunctions.GetPlatformIconPath,
 		"getPlatformName":          templateFunctions.GetPlatformName,
 		"getSocialNetworkIconPath": templateFunctions.GetSocialNetworkIconPath,

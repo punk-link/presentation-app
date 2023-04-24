@@ -1,6 +1,10 @@
 package templateFunctions
 
-import platformContracts "github.com/punk-link/platform-contracts"
+import (
+	"main/constants"
+
+	platformContracts "github.com/punk-link/platform-contracts"
+)
 
 func GetPlatformIconPath(platformId string) string {
 	switch platformId {
@@ -42,11 +46,11 @@ func GetPlatformName(platformId string) string {
 
 func GetSocialNetworkIconPath(socialNetworkId string) string {
 	switch socialNetworkId {
-	case "facebook":
+	case constants.FACEBOOK:
 		return "Facebook"
-	case "instagram":
+	case constants.INSTAGRAM:
 		return "Instagram"
-	case "twitter":
+	case constants.TWITTER:
 		return "Twitter"
 	}
 
