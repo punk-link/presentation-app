@@ -1,7 +1,21 @@
 {{ define "slim-release-details.go.tmpl" }}
-<div>
-    <img src="{{ .ImageDetails.Url }}" alt="{{ .ImageDetails.AltText }}" width="200" height="200">
-    <h1>{{ .Name }}</h1>
-    <h2>{{ .ReleaseDate }}</h2>
-</div>
+<ul id="content-albums" class="guest sort__list">
+{{ range .Releases }}
+    <li class="guest__item">
+        <div class="guest__image">
+            <picture>
+                <img src="{{ .ImageDetails.Url }}" alt="{{ .ImageDetails.AltText }}">
+                <source srcset="{{ .ImageDetails.Url }}" type="image/webp">
+            </picture>
+        </div>
+        <div class="guest__content">
+            <div class="guest__year">{{ .ReleaseDate }}</div>
+            <a href="/releases/{{ .Slug }}">
+                <h6 class="guest__title">{{ .Name }}</h6>
+            </a>
+            <div class="guest__status">{{ .Type }}</div>
+        </div>
+    </li>
+{{ end }}
+</ul>
 {{ end }}

@@ -1,0 +1,43 @@
+{{ define "artist-releases.go.tmpl" }}
+<div class="lable-music">
+    <div class="bg-nota">
+        <picture>
+            <source srcset="/assets/img/bg.webp" type="image/webp">
+            <img src="/assets/img/bg.png">
+        </picture>
+    </div>
+    <div class="filter-guest">
+        <div class="filter-guest__btn">
+            sort by
+        </div>
+        <div class="filter-guest__list">
+            <div class="filter-guest__item" id="sortAscBtn">
+                <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.979 10.55L11.986 7H14L14 14H7V11.986L10.55 11.979L0 1.429L1.429 0L11.979 10.55Z" fill="#9F9F9F" />
+                </svg>
+                year
+            </div>
+            <div class="filter-guest__item" id="sortDescBtn">
+                <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.979 3.45L11.986 7H14L14 0H7V2.014L10.55 2.021L0 12.571L1.429 14L11.979 3.45Z" fill="#9F9F9F" />
+                </svg>
+                year
+            </div>
+            <div class="filter-guest__item" id="sortA">
+                <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.979 10.55L11.986 7H14L14 14H7V11.986L10.55 11.979L0 1.429L1.429 0L11.979 10.55Z" fill="#9F9F9F" />
+                </svg>
+                a-z
+            </div>
+            <div class="filter-guest__item" id="sortZ">
+                <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.979 3.45L11.986 7H14L14 0H7V2.014L10.55 2.021L0 12.571L1.429 14L11.979 3.45Z" fill="#9F9F9F" />
+                </svg>
+                z-a
+            </div>
+        </div>
+    </div>
+    {{ template "slim-release-details.go.tmpl" . }}
+    {{ template "global/share-links.go.tmpl" . }}
+</div>
+{{ end }}

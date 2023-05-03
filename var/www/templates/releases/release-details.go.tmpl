@@ -7,7 +7,7 @@
         </picture>
     </div>
     <div class="album__links">
-    <span class="dots"></span>
+        <span class="dots"></span>
         {{ range .Artists }}
         <a href="/artists/{{ .Slug }}" class="album__link">{{ .Name }}</a>
         {{ end }}
@@ -20,28 +20,12 @@
     <div class="album__img">
         <picture>
             <img src="{{ .ImageDetails.Url }}" alt="{{ .ImageDetails.AltText }}">
-            <source srcset="/assets/img/cover.webp" type="image/webp">
+            <source srcset="{{ .ImageDetails.Url }}" type="image/webp">
         </picture>
     </div>
     {{ template "track-details.go.tmpl" . }}
     <p class="album__description">
         {{ .Description }}
     </p>
-    <div class="social-list">
-			<a href="#" class="social-list__item">
-				<picture>
-					<source srcset="/assets/img/icons/twitter.webp" type="image/webp">
-					<img src="/assets/img/icons/twitter.png" alt="twitter" />
-				</picture>
-				we on twitter
-			</a>
-			<a href="#" class="social-list__item">
-				<picture>
-					<source srcset="/assets/img/icons/fb.webp" type="image/webp">
-					<img src="/assets/img/icons/fb.png" alt="facebook" />
-				</picture>
-				we on facebook
-			</a>
-		</div>
 </div>
 {{ end }}

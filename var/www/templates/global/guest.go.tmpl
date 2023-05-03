@@ -3,7 +3,7 @@
     {{ template "global/head.go.tmpl" . }}
     <body>
 	  	<div class="wrapper __container">
-          {{ template "global/header.go.tmpl" . }}
+          	{{ template "global/header.go.tmpl" . }}
             <main class="page">
                 <!-- =======Section album============================ -->
                 <div class="album">
@@ -15,9 +15,9 @@
                     </div>
                     <div class="album__links">
                <span class="dots"></span>
-        {{ range .Artists }}
-        <a href="/artists/{{ .Slug }}" class="album__link">{{ .Name }}</a>
-        {{ end }}
+			{{ range .Artists }}
+			<a href="/artists/{{ .Slug }}" class="album__link">{{ .Name }}</a>
+			{{ end }}
                </div>
 				</div>
 				<div class="group-radio">
@@ -165,4 +165,18 @@
         {{ template "global/scripts.go.tmpl" }}
     </body>
 </html>   
+<body>
+    <h1>{{ .ArtistName }}</h1>
+    {{ template "global/footer.go.tmpl" }}
+    <div>
+        {{ template "artist-release-number.go.tmpl" . }}
+    </div>
+    <div>
+        {{ range .Releases }}
+            {{ template "slim-release-details.go.tmpl" . }}
+        {{ end }}
+    </div>
+    {{ template "social-networks.go.tmpl" . }}
+    {{ template "global/scripts.go.tmpl" }}
+</body>
 {{ end }}

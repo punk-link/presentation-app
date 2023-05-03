@@ -1,0 +1,14 @@
+{{ define "artist-details.go.tmpl" }}
+<div class="album">
+    <div class="bg-decor">
+        <picture>
+            <source srcset="/assets/img/logosback.webp" type="image/webp">
+            <img src="/assets/img/logosback.png">
+        </picture>
+    </div>
+    <div class="album__links">
+        <a href="/artists/{{ .Slug }}" class="album__link">{{ .ArtistName }}</a>
+    </div>
+    {{ template "artist-release-number.go.tmpl" . }}
+</div>
+{{ end }}

@@ -1,19 +1,19 @@
 {{ define "artist.go.tmpl" }}
 <html lang="en">
-    {{ template "global/head.go.tmpl" . }}
-    <body>
-	    <h1>{{ .ArtistName }}</h1>
+{{ template "global/head.go.tmpl" . }}
+<body>
+    <div class="wrapper __container">
+        {{ template "global/header.go.tmpl" . }}
+        <main class="page">
+            {{ template "artist-details.go.tmpl" . }}
+            {{ template "artist-releases.go.tmpl" . }}
+            <div class="sidebar">
+            {{ template "artist-social-networks.go.tmpl" }}
+            </div>
+        </main>
         {{ template "global/footer.go.tmpl" }}
-        <div>
-            {{ template "artist-release-number.go.tmpl" . }}
-        </div>
-        <div>
-            {{ range .Releases }}
-                {{ template "slim-release-details.go.tmpl" . }}
-            {{ end }}
-        </div>
-        {{ template "social-networks.go.tmpl" . }}
-        {{ template "global/scripts.go.tmpl" }}
-    </body>
+    </div>
+    {{ template "global/scripts.go.tmpl" }}
+</body>
 </html>   
 {{ end }}

@@ -30,6 +30,7 @@ func Configure(logger logger.Logger, consul consulClient.ConsulClient, appSecret
 	app.SetFuncMap(template.FuncMap{
 		"convertToInt":             templateFunctions.ConvertToInt,
 		"generateShareLink":        shareLinksServices.Generate,
+		"getGramaticalNumber":      templateFunctions.GetGramaticalNumber,
 		"getPlatformIconPath":      templateFunctions.GetPlatformIconPath,
 		"getPlatformName":          templateFunctions.GetPlatformName,
 		"getSocialNetworkIconPath": templateFunctions.GetSocialNetworkIconPath,
