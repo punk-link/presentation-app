@@ -1,17 +1,20 @@
 (() => {
     "use strict";
-    const links = document.querySelectorAll(".album__link");
-    const dots = document.querySelector(".dots");
-    if (links.length > 1) dots.style.display = "block";
-    links.forEach((function (e, i) {
-        if (i > 0) e.classList.add("hidden");
-    }));
-    dots.addEventListener("click", (function () {
+    const script_button_link = document.querySelector(".album__link");
+    if (script_button_link) {
+        const links = document.querySelectorAll(".album__link");
+        const dots = document.querySelector(".dots");
+        if (links.length > 1) dots.style.display = "block";
         links.forEach((function (e, i) {
-            if (i > 0) e.classList.toggle("hidden");
-            e.classList.add("more");
+            if (i > 0) e.classList.add("hidden");
         }));
-    }));
+        dots.addEventListener("click", (function () {
+            links.forEach((function (e, i) {
+                if (i > 0) e.classList.toggle("hidden");
+                e.classList.add("more");
+            }));
+        }));
+    }
     const shareLink = document.querySelector(".share-link");
     if (shareLink) {
         const modalTemplates = {
