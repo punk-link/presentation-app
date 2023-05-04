@@ -953,11 +953,12 @@ body {
 }
 
 .guest__image {
-  width: 200px;
-  height: 200px;
+   flex: 0 0 200px;
   background-color: #ffffff;
 }
-
+.guest__image img{
+     max-width: 100%;
+}
 .guest__content {
   padding-left: 30px;
 }
@@ -1173,8 +1174,8 @@ body {
   }
 }
 
-.webp .album__links .dots{ background-image: url(../img/icons/dots.webp); }
+.webp .album__links .dots{ background-image: url(/assets/img/icons/dots.webp); }
 
-.webp .album__link:nth-child(2)::before{ background-image: url(../img/icons/icon-arrow.webp); }
+.webp .album__link:nth-child(2)::before{ background-image: url(/assets/img/icons/icon-arrow.webp); }
 
-.webp .filter-guest__btn::before{ background-image: url(../img/icons/icon-arrow.webp); }
+.webp .filter-guest__btn::before{ background-image: url(/assets/img/icons/icon-arrow.webp); }
