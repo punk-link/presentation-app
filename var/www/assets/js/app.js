@@ -1,9 +1,8 @@
 (() => {
     "use strict";
-    const script_button_link = document.querySelector(".album__link");
-    if (script_button_link) {
+    const dots = document.querySelector(".dots");
+    if (dots) {
         const links = document.querySelectorAll(".album__link");
-        const dots = document.querySelector(".dots");
         if (links.length > 1) dots.style.display = "block";
         links.forEach((function (e, i) {
             if (i > 0) e.classList.add("hidden");
@@ -15,6 +14,13 @@
             }));
         }));
     }
+    const header = document.querySelector("header");
+    const scrollContent = document.querySelector(".scroll-content");
+    const initialHeaderPosition = header.offsetTop;
+    scrollContent.addEventListener("scroll", (function () {
+        const scrolledPixels = scrollContent.scrollTop;
+        header.style.top = initialHeaderPosition - scrolledPixels + "px";
+    }));
     const shareLink = document.querySelector(".share-link");
     if (shareLink) {
         const modalTemplates = {
