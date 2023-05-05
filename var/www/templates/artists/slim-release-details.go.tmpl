@@ -1,6 +1,7 @@
 {{ define "slim-release-details.go.tmpl" }}
 <ul id="content-albums" class="guest sort__list">
 {{ range .Releases }}
+    {{ $typeId := getReleaseTypeId .Type }}
     <li class="guest__item">
         <div class="guest__image">
             <picture>
@@ -13,7 +14,7 @@
             <a href="/releases/{{ .Slug }}">
                 <h6 class="guest__title">{{ .Name }}</h6>
             </a>
-            <div class="guest__status">{{ .Type }}</div>
+            <div class="guest__status" id="{{ $typeId }}">{{ .Type }}</div>
         </div>
     </li>
 {{ end }}

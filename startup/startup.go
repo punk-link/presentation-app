@@ -33,6 +33,7 @@ func Configure(logger logger.Logger, consul consulClient.ConsulClient, appSecret
 		"getGramaticalNumber":      templateFunctions.GetGramaticalNumber,
 		"getPlatformIconPath":      templateFunctions.GetPlatformIconPath,
 		"getPlatformName":          templateFunctions.GetPlatformName,
+		"getReleaseTypeId":         templateFunctions.GetReleaseTypeId,
 		"getSocialNetworkIconPath": templateFunctions.GetSocialNetworkIconPath,
 		"sub":                      templateFunctions.Sub,
 	})

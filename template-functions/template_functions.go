@@ -44,6 +44,16 @@ func GetPlatformName(platformId string) string {
 	return ""
 }
 
+func GetReleaseTypeId(releaseType string) string {
+	if releaseType == platformContracts.Album {
+		return "content-album"
+	} else if releaseType == platformContracts.Compilation {
+		return "content-compilation"
+	}
+
+	return "content-single"
+}
+
 func GetSocialNetworkIconPath(socialNetworkId string) string {
 	switch socialNetworkId {
 	case constants.FACEBOOK:
