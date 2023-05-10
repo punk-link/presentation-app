@@ -1,5 +1,5 @@
 {{ define "slim-release-details.go.tmpl" }}
-<ul id="content-albums" class="guest sort__list">
+<ul class="guest sort__list">
 {{ range .Releases }}
     {{ $typeId := getReleaseTypeId .Type }}
     <li class="guest__item">

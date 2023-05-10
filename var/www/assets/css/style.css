@@ -1106,6 +1106,10 @@ body {
   overflow-x: hidden;
 }
 
+.hidden {
+  display: none;
+}
+
 @media (any-hover: hover) and (any-pointer: fine) {
   .album__link:nth-child(2):hover::before {
     -webkit-transform: scale(1.1);
@@ -1184,8 +1188,3 @@ body {
   }
 }
 
-.webp .album__links .dots{ background-image: url(../img/icons/dots.webp); }
-
-.webp .album__link:nth-child(2)::before{ background-image: url(../img/icons/icon-arrow.webp); }
-
-.webp .filter-guest__btn::before{ background-image: url(../img/icons/icon-arrow.webp); }
