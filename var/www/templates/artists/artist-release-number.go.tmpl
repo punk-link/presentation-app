@@ -2,21 +2,21 @@
 <div class="group-radio">
     <label>
         {{ $soleReleaseNumber := convertToInt .SoleReleaseNumber }}
-        <input checked type="radio" name="filter" value="1" class="real-radio-btn">
+        <input checked type="radio" name="filter" value="album" class="real-radio-btn">
         <span class="custom-radio-btn"></span>
         <span id="count1">{{ $soleReleaseNumber }}</span>
-        {{ getGramaticalNumber $soleReleaseNumber "release" "releases" }}
+        {{ getGramaticalNumber $soleReleaseNumber "album" "albums" }}
     </label>
     <label>
         {{ $singleNumber := 0 }}
-        <input checked type="radio" name="filter" value="2" class="real-radio-btn">
+        <input checked type="radio" name="filter" value="single" class="real-radio-btn">
         <span class="custom-radio-btn"></span>
         <span id="count2">{{ $singleNumber }}</span>
         {{ getGramaticalNumber $singleNumber "single" "singles" }}
     </label>
     <label>
         {{ $compilationNumber := convertToInt .CompilationNumber }}
-        <input checked type="radio" name="filter" value="3" class="real-radio-btn">
+        <input checked type="radio" name="filter" value="compilation" class="real-radio-btn">
         <span class="custom-radio-btn"></span>
         <span id="count3">{{ $compilationNumber }}</span>
         {{ getGramaticalNumber $compilationNumber "compilation" "compilations" }}
