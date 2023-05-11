@@ -7,14 +7,14 @@ import (
 	contracts "github.com/punk-link/presentation-contracts"
 )
 
-func ToArtistMap(hashCoder commonServices.HashCoder, dataService commonServices.TemplateDataServer, artist *contracts.Artist, soleReleases []*contracts.SlimRelease, compilations []*contracts.SlimRelease) map[string]any {
+func ToArtistMap(hashCoder commonServices.HashCoder, dataService commonServices.TemplateDataServer, artist *contracts.Artist, sortedReleases []*contracts.SlimRelease, albumNumber int, singleNumber int, compilationNumber int) map[string]any {
 	return dataService.Enrich(artist.Name, map[string]any{
 		"Slug":              hashCoder.Encode(int(artist.Id)),
+		"AlbumNumber":       albumNumber,
 		"ArtistName":        artist.Name,
-		"SoleReleaseNumber": int32(len(soleReleases)),
-		"CompilationNumber": int32(len(compilations)),
-		"Releases":          ToSlimReleaseMaps(hashCoder, soleReleases),
-		"Compilations":      ToSlimReleaseMaps(hashCoder, compilations),
+		"CompilationNumber": compilationNumber,
+		"Releases":          ToSlimReleaseMaps(hashCoder, sortedReleases),
+		"SingleNumber":      singleNumber,
 		"SocialNetworks":    toSocialNetworks(artist),
 	})
 }

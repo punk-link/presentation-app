@@ -3,7 +3,6 @@ package artists
 import (
 	"context"
 	"main/helpers"
-	"main/models/artists/enums"
 	converters "main/services/artists/converters"
 	commonServices "main/services/common"
 	"sort"
@@ -11,6 +10,7 @@ import (
 
 	cacheManager "github.com/punk-link/cache-manager"
 	"github.com/punk-link/logger"
+	platformContracts "github.com/punk-link/platform-contracts"
 	contracts "github.com/punk-link/presentation-contracts"
 	"github.com/samber/do"
 )
@@ -50,8 +50,7 @@ func (t *ArtistService) Get(hash string) (map[string]any, error) {
 	request := contracts.ArtistRequest{Id: int32(id)}
 
 	artist, err := t.grpcClient.GetArtist(context.Background(), &request)
-	soleReleases, compilations, err := t.sortReleases(err, artist.Releases)
-	result, err := buildArtistResult(err, t.hashCoder, t.dataService, artist, soleReleases, compilations)
+	result, err := t.buildArtistResult(err, t.hashCoder, t.dataService, artist, artist.Releases)
 	if err == nil {
 		t.cache.Set(cacheKey, result, ARTIST_CACHE_DURATION)
 	}
@@ -59,17 +58,35 @@ func (t *ArtistService) Get(hash string) (map[string]any, error) {
 	return result, err
 }
 
-func (t *ArtistService) sortReleases(err error, releases []*contracts.SlimRelease) ([]*contracts.SlimRelease, []*contracts.SlimRelease, error) {
+func (t *ArtistService) buildArtistResult(err error, hashCoder commonServices.HashCoder, dataService commonServices.TemplateDataServer, artist *contracts.Artist, releases []*contracts.SlimRelease) (map[string]any, error) {
+	sortedReleases, albumNumber, singleNumber, compilationNumber, err := sortReleasesAndGetNumberByType(err, releases)
 	if err != nil {
-		return make([]*contracts.SlimRelease, 0), make([]*contracts.SlimRelease, 0), err
+		return make(map[string]any, 0), err
 	}
+
+	return converters.ToArtistMap(hashCoder, dataService, artist, sortedReleases, albumNumber, singleNumber, compilationNumber), nil
+}
+
+func sortReleasesAndGetNumberByType(err error, releases []*contracts.SlimRelease) ([]*contracts.SlimRelease, int, int, int, error) {
+	if err != nil {
+		return make([]*contracts.SlimRelease, 0), 0, 0, 0, err
+	}
+
+	albumNumber := 0
+	singleNumber := 0
 
 	soleReleases := make([]*contracts.SlimRelease, 0)
 	compilations := make([]*contracts.SlimRelease, 0)
 	for _, release := range releases {
-		if release.Type == enums.Compilation {
+		if release.Type == platformContracts.Compilation {
 			compilations = append(compilations, release)
 		} else {
+			if release.Type == platformContracts.Album {
+				albumNumber++
+			} else {
+				singleNumber++
+			}
+
 			soleReleases = append(soleReleases, release)
 		}
 	}
@@ -77,15 +94,7 @@ func (t *ArtistService) sortReleases(err error, releases []*contracts.SlimReleas
 	sortReleasesInternal(soleReleases)
 	sortReleasesInternal(compilations)
 
-	return soleReleases, compilations, err
-}
-
-func buildArtistResult(err error, hashCoder commonServices.HashCoder, dataService commonServices.TemplateDataServer, artist *contracts.Artist, soleReleases []*contracts.SlimRelease, compilations []*contracts.SlimRelease) (map[string]any, error) {
-	if err != nil {
-		return make(map[string]any, 0), err
-	}
-
-	return converters.ToArtistMap(hashCoder, dataService, artist, soleReleases, compilations), nil
+	return append(soleReleases, compilations...), albumNumber, singleNumber, len(compilations), err
 }
 
 func sortReleasesInternal(releases []*contracts.SlimRelease) {

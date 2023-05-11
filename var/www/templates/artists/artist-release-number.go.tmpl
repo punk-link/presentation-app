@@ -1,25 +1,22 @@
 {{ define "artist-release-number.go.tmpl" }}
 <div class="group-radio">
     <label>
-        {{ $soleReleaseNumber := convertToInt .SoleReleaseNumber }}
         <input type="radio" name="filter" value="album" class="real-radio-btn">
         <span class="custom-radio-btn"></span>
-        <span id="count1">{{ $soleReleaseNumber }}</span>
-        {{ getGramaticalNumber $soleReleaseNumber "album" "albums" }}
+        <span id="count1">{{ .AlbumNumber }}</span>
+        {{ getGramaticalNumber .AlbumNumber "album" "albums" }}
     </label>
     <label>
-        {{ $singleNumber := 0 }}
         <input type="radio" name="filter" value="single" class="real-radio-btn">
         <span class="custom-radio-btn"></span>
-        <span id="count2">{{ $singleNumber }}</span>
-        {{ getGramaticalNumber $singleNumber "single" "singles" }}
+        <span id="count2">{{ .SingleNumber }}</span>
+        {{ getGramaticalNumber .SingleNumber "single" "singles" }}
     </label>
     <label>
-        {{ $compilationNumber := convertToInt .CompilationNumber }}
         <input type="radio" name="filter" value="compilation" class="real-radio-btn">
         <span class="custom-radio-btn"></span>
-        <span id="count3">{{ $compilationNumber }}</span>
-        {{ getGramaticalNumber $compilationNumber "compilation" "compilations" }}
+        <span id="count3">{{ .CompilationNumber }}</span>
+        {{ getGramaticalNumber .CompilationNumber "compilation" "compilations" }}
     </label>
 </div>
 {{ end }}
