@@ -37,6 +37,7 @@ func buildDependencies(logger loggerService.Logger, consul consulClient.ConsulCl
 	templateData := templateDataValue.(map[string]any)
 	do.ProvideValue(injector, &commonModels.TemplateOptions{
 		ManagementAppEndpoint: templateData["ManagementAppEndpoint"].(string),
+		PageTitleTemplate:     templateData["PageTitleTemplate"].(string),
 	})
 
 	do.Provide(injector, commonServices.NewHashCoder)

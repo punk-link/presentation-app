@@ -26,8 +26,7 @@ func (t *TemplateDataService) AddRequestUrl(pageUrl string, data map[string]any)
 }
 
 func (t *TemplateDataService) Enrich(pageTitle string, data map[string]any) map[string]any {
-	// TODO: add a dynamic domain name to the title
-	data["PageTitle"] = fmt.Sprintf("%s – Synonym.fans", pageTitle)
+	data["PageTitle"] = fmt.Sprintf("%s – %s", pageTitle, t.options.PageTitleTemplate)
 	data["ManagementAppEndpoint"] = t.options.ManagementAppEndpoint
 	data["SharableSocialNetworkIds"] = t.addSocialNetworkIds()
 
