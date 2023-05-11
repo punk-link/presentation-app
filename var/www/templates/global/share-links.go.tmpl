@@ -14,7 +14,7 @@
                 <div class="popup__media-items">
                     {{ $pageUrl := .PageUrl }}
                     {{ $pageTitle := .PageTitle }}
-                    {{ range $id := .SharableSocialNetworkIds }}
+                    {{ range $id := .ShareableSocialNetworkIds }}
                     {{ $icon := getSocialNetworkIconPath $id }}
                     <a href="{{ generateShareLink $id $pageUrl $pageTitle }}" class="popup__media-item {{ $id }}" style="background-image: url(/assets/img/icons/{{ $icon }}.svg);"></a>
                     {{ end }}

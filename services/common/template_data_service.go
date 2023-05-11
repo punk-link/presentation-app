@@ -28,13 +28,13 @@ func (t *TemplateDataService) AddRequestUrl(pageUrl string, data map[string]any)
 func (t *TemplateDataService) Enrich(pageTitle string, data map[string]any) map[string]any {
 	data["PageTitle"] = fmt.Sprintf("%s – %s", pageTitle, t.options.PageTitleTemplate)
 	data["ManagementAppEndpoint"] = t.options.ManagementAppEndpoint
-	data["SharableSocialNetworkIds"] = t.addSocialNetworkIds()
+	data["ShareableSocialNetworkIds"] = t.addShareableSocialNetworkIds()
 
 	return data
 }
 
 // TODO: move to contracts
-func (t *TemplateDataService) addSocialNetworkIds() []string {
+func (t *TemplateDataService) addShareableSocialNetworkIds() []string {
 	return []string{
 		constants.FACEBOOK,
 		//constants.INSTAGRAM,
