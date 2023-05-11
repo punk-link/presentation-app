@@ -1,6 +1,6 @@
 module main
 
-go 1.19
+go 1.20
 
 require (
 	github.com/getsentry/sentry-go v0.16.0
