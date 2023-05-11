@@ -57,11 +57,11 @@ func GetReleaseTypeId(releaseType string) string {
 func GetSocialNetworkIconPath(socialNetworkId string) string {
 	switch socialNetworkId {
 	case constants.FACEBOOK:
-		return "Facebook"
+		return "fb"
 	case constants.INSTAGRAM:
-		return "Instagram"
+		return "insta"
 	case constants.TWITTER:
-		return "Twitter"
+		return "twitter"
 	}
 
 	return socialNetworkId

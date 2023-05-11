@@ -3,26 +3,15 @@
     <div class="guest__social-title">
         Follow us:
     </div>
-    <a href="#" class="social-list__item">
+    {{ range $id, $url := .SocialNetworks }}
+    {{ $icon := getSocialNetworkIconPath $id }}
+    <a href="{{ $url }}" class="social-list__item">
         <picture>
-            <source srcset="/assets/img/icons/twitter.webp" type="image/webp">
-            <img src="/assets/img/icons/twitter.png" alt="twitter">
+            <source srcset="/assets/img/icons/{{ $icon }}.webp" type="image/webp">
+            <img src="/assets/img/icons/{{ $icon }}.png" alt="{{ $id }}">
         </picture>
-        twitter
+        {{ $id }}
     </a>
-    <a href="#" class="social-list__item">
-        <picture>
-            <source srcset="/assets/img/icons/fb.webp" type="image/webp">
-            <img src="/assets/img/icons/fb.png" alt="facebook">
-        </picture>
-        facebook
-    </a>
-    <a href="#" class="social-list__item">
-        <picture>
-            <source srcset="/assets/img/icons/insta.webp" type="image/webp">
-            <img src="/assets/img/icons/insta.png" alt="instagram">
-        </picture>
-        instagram
-    </a>
+    {{ end }}
 </div>
 {{ end }}

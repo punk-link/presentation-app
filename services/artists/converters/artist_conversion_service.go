@@ -1,6 +1,7 @@
 package converters
 
 import (
+	"main/constants"
 	commonServices "main/services/common"
 
 	contracts "github.com/punk-link/presentation-contracts"
@@ -37,9 +38,9 @@ func toSlimArtistMap(hashCoder commonServices.HashCoder, artist *contracts.SlimA
 func toSocialNetworks(artist *contracts.Artist) map[string]any {
 	result := make(map[string]any)
 
-	result["facebook"] = "https://www.facebook.com/thesubways/"
-	result["instagram"] = "https://www.instagram.com/thesubways/"
-	result["twitter"] = "https://twitter.com/thesubways"
+	result[constants.FACEBOOK] = "https://www.facebook.com/thesubways/"
+	result[constants.INSTAGRAM] = "https://www.instagram.com/thesubways/"
+	result[constants.TWITTER] = "https://twitter.com/thesubways"
 
 	return result
 }
