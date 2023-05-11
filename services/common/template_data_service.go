@@ -29,17 +29,18 @@ func (t *TemplateDataService) Enrich(pageTitle string, data map[string]any) map[
 	// TODO: add a dynamic domain name to the title
 	data["PageTitle"] = fmt.Sprintf("%s – Synonym.fans", pageTitle)
 	data["ManagementAppEndpoint"] = t.options.ManagementAppEndpoint
-	data["SocialNatworkIds"] = t.addSocialNetworkIds()
+	data["SharableSocialNetworkIds"] = t.addSocialNetworkIds()
 
 	return data
 }
 
-func (t *TemplateDataService) addSocialNetworkIds() map[string]any {
-	return map[string]any{
-		"Facebook":  constants.FACEBOOK,
-		"Instagram": constants.INSTAGRAM,
-		"Telegram":  constants.TELEGRAM,
-		"Twitter":   constants.TWITTER,
-		"Vk":        constants.VK,
+// TODO: move to contracts
+func (t *TemplateDataService) addSocialNetworkIds() []string {
+	return []string{
+		constants.FACEBOOK,
+		//constants.INSTAGRAM,
+		constants.TELEGRAM,
+		constants.TWITTER,
+		constants.VK,
 	}
 }

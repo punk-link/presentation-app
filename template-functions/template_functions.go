@@ -60,8 +60,12 @@ func GetSocialNetworkIconPath(socialNetworkId string) string {
 		return "fb"
 	case constants.INSTAGRAM:
 		return "insta"
+	case constants.TELEGRAM:
+		return "telegram"
 	case constants.TWITTER:
 		return "twitter"
+	case constants.VK:
+		return "vk"
 	}
 
 	return socialNetworkId

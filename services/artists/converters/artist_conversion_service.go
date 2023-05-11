@@ -35,6 +35,7 @@ func toSlimArtistMap(hashCoder commonServices.HashCoder, artist *contracts.SlimA
 	}
 }
 
+// TODO: move to contracts
 func toSocialNetworks(artist *contracts.Artist) map[string]any {
 	result := make(map[string]any)
 
