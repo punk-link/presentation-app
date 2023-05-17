@@ -5,7 +5,7 @@
         {{ .Name }}
         {{ if .IsExplicit }}🄴{{ end }}
         {{ range .Artists }}
-        <span><a href="artists/{{ .Slug }}">{{ .Name }}</a></span>
+        <span><a href="/artists/{{ .Slug }}">{{ .Name }}</a></span>
         {{ end }}
     </li>
     {{ end }}

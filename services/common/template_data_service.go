@@ -34,6 +34,7 @@ func (t *TemplateDataService) Enrich(pageTitle string, data map[string]any) map[
 }
 
 // TODO: move to contracts
+// TODO: replace constants with contract valuse
 func (t *TemplateDataService) addShareableSocialNetworkIds() []string {
 	return []string{
 		constants.FACEBOOK,
