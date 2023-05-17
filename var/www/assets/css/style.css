@@ -366,19 +366,12 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-}
-
-.link__albums {
-  width: 40%;
-  font-size: 1rem;
-  padding-bottom: 10px;
-}
-
-.link__compilations {
-  width: 40%;
-  font-size: 1rem;
-  padding-bottom: 10px;
   margin-bottom: 73px;
+}
+
+.link__item {
+  font-size: 1rem;
+  padding: 0 10px 7px 0;
   line-height: 1.4;
   -webkit-transition: all 0.1s ease-out 0s;
   -o-transition: all 0.1s ease-out 0s;
@@ -1104,15 +1097,19 @@ body {
   overflow-x: hidden;
 }
 
-
+/* Скрываем scrollbar для Chrome, Safari и Opera */
 
 .lable-music::-webkit-scrollbar {
   display: none;
 }
 
+/* Скрываем scrollbar для IE, Edge и Firefox */
+
 .lable-music {
   -ms-overflow-style: none;
+  /* IE и Edge */
   scrollbar-width: none;
+  /* Firefox */
 }
 
 @media (any-hover: hover) and (any-pointer: fine) {
@@ -1125,7 +1122,7 @@ body {
     transition: all 0.1s ease-out 0s;
   }
 
-  .link__compilations:hover {
+  .link__item:hover {
     -webkit-transition: all 0.1s ease-out 0s;
     -o-transition: all 0.1s ease-out 0s;
     transition: all 0.1s ease-out 0s;
@@ -1192,3 +1189,4 @@ body {
     transition: all 0.2s ease 0s;
   }
 }
+

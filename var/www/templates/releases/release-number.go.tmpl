@@ -2,13 +2,13 @@
 {{ if eq (len .Artists) 1 }}
 <div class="link">
     {{ $slug := (index .Artists 0).Slug }}
-    <a href="/artists/{{ $slug }}?filter=albums" class="link__albums">
+    <a href="/artists/{{ $slug }}?filter=albums" class="link__item">
         {{ .AlbumNumber }} {{ getGramaticalNumber .AlbumNumber "album" "albums" }}
     </a>
-    <a href="/artists/{{ $slug }}?filter=singles" class="link__albums">
+    <a href="/artists/{{ $slug }}?filter=singles" class="link__item">
         {{ .SingleNumber }} {{ getGramaticalNumber .SingleNumber "single" "singles" }}
     </a>
-    <a href="/artists/{{ $slug }}?filter=compilations" class="link__compilations">
+    <a href="/artists/{{ $slug }}?filter=compilations" class="link__item">
         {{ .CompilationNumber }} {{ getGramaticalNumber .CompilationNumber "compilation" "compilations" }}
     </a>
 </div>
