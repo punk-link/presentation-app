@@ -42,20 +42,8 @@ func ToReleaseMap(hashCoder commonServices.HashCoder, dataService commonServices
 	})
 }
 
-func toPlatformUrlMaps(platformUrls []*contracts.PlatformUrl) []map[string]any {
-	results := make([]map[string]any, len(platformUrls))
-	for i, url := range platformUrls {
-		results[i] = map[string]any{
-			"Id":  url.PlatformId,
-			"Url": url.Url,
-		}
-	}
-
-	return results
-}
-
-func toTrackMaps(hashCoder commonServices.HashCoder, tracks []*contracts.Track, artists []*contracts.SlimArtist) []map[string]any {
-	excludedArtistMap := make(map[string]bool)
+func getArtistPresentedOnAllTracksMap(artists []*contracts.SlimArtist, tracks []*contracts.Track) map[string]bool {
+	presentedOnAllTracksArtistMap := make(map[string]bool)
 	for _, releaseArtist := range artists {
 		isPresentedOnAllTracks := false
 		for _, track := range tracks {
@@ -72,15 +60,33 @@ func toTrackMaps(hashCoder commonServices.HashCoder, tracks []*contracts.Track, 
 		}
 
 		if isPresentedOnAllTracks {
-			excludedArtistMap[releaseArtist.Name] = true
+			presentedOnAllTracksArtistMap[releaseArtist.Name] = true
 		}
 	}
+
+	return presentedOnAllTracksArtistMap
+}
+
+func toPlatformUrlMaps(platformUrls []*contracts.PlatformUrl) []map[string]any {
+	results := make([]map[string]any, len(platformUrls))
+	for i, url := range platformUrls {
+		results[i] = map[string]any{
+			"Id":  url.PlatformId,
+			"Url": url.Url,
+		}
+	}
+
+	return results
+}
+
+func toTrackMaps(hashCoder commonServices.HashCoder, tracks []*contracts.Track, artists []*contracts.SlimArtist) []map[string]any {
+	presentedOnAllTracksArtistMap := getArtistPresentedOnAllTracksMap(artists, tracks)
 
 	results := make([]map[string]any, len(tracks))
 	for i, track := range tracks {
 		trackArtists := make([]*contracts.SlimArtist, 0)
 		for _, trackArtist := range track.Artists {
-			if !excludedArtistMap[trackArtist.Name] {
+			if !presentedOnAllTracksArtistMap[trackArtist.Name] {
 				trackArtists = append(trackArtists, trackArtist)
 			}
 		}
