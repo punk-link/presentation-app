@@ -24,7 +24,7 @@ func ToSlimReleaseMaps(hashCoder commonServices.HashCoder, source []*contracts.S
 
 func ToReleaseMap(hashCoder commonServices.HashCoder, dataService commonServices.TemplateDataServer, release *contracts.Release) map[string]any {
 	title := fmt.Sprintf("%s – %s", release.Name, release.ReleaseArtists[0].Name)
-	tracks := toTrackMaps(hashCoder, release.Tracks)
+	tracks := toTrackMaps(hashCoder, release.Tracks, release.ReleaseArtists)
 
 	// TODO: add album and single numbers to ArtistStats
 	return dataService.Enrich(title, map[string]any{
@@ -54,11 +54,39 @@ func toPlatformUrlMaps(platformUrls []*contracts.PlatformUrl) []map[string]any {
 	return results
 }
 
-func toTrackMaps(hashCoder commonServices.HashCoder, tracks []*contracts.Track) []map[string]any {
+func toTrackMaps(hashCoder commonServices.HashCoder, tracks []*contracts.Track, artists []*contracts.SlimArtist) []map[string]any {
+	excludedArtistMap := make(map[string]bool)
+	for _, releaseArtist := range artists {
+		isPresentedOnAllTracks := false
+		for _, track := range tracks {
+			for _, trackArtist := range track.Artists {
+				if trackArtist.Name == releaseArtist.Name {
+					isPresentedOnAllTracks = true
+					break
+				}
+			}
+
+			if !isPresentedOnAllTracks {
+				break
+			}
+		}
+
+		if isPresentedOnAllTracks {
+			excludedArtistMap[releaseArtist.Name] = true
+		}
+	}
+
 	results := make([]map[string]any, len(tracks))
 	for i, track := range tracks {
+		trackArtists := make([]*contracts.SlimArtist, 0)
+		for _, trackArtist := range track.Artists {
+			if !excludedArtistMap[trackArtist.Name] {
+				trackArtists = append(trackArtists, trackArtist)
+			}
+		}
+
 		results[i] = map[string]any{
-			"Artists":    ToSlimArtistMaps(hashCoder, track.Artists),
+			"Artists":    ToSlimArtistMaps(hashCoder, trackArtists),
 			"IsExplicit": track.IsExplicit,
 			"Name":       track.Name,
 		}
