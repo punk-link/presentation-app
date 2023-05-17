@@ -80,7 +80,7 @@
         }
     };
     copyFunc();
-    const filterGuestFunc = () => {
+    const sortListFunc = () => {
         const filterGuest = document.querySelector(".filter-guest");
         if (filterGuest) {
             const filterBtn = document.querySelector(".filter-guest__btn");
@@ -119,50 +119,37 @@
             }
             document.getElementById("sortAscBtn").addEventListener("click", (function () {
                 sortYears("asc");
+                filterList.classList.toggle("filter-active");
             }));
             document.getElementById("sortDescBtn").addEventListener("click", (function () {
                 sortYears("desc");
+                filterList.classList.toggle("filter-active");
             }));
             document.getElementById("sortA").addEventListener("click", (function () {
                 sortList("asc");
+                filterList.classList.toggle("filter-active");
             }));
             document.getElementById("sortZ").addEventListener("click", (function () {
                 sortList("desc");
+                filterList.classList.toggle("filter-active");
             }));
         }
     };
-    filterGuestFunc();
-    const countFunc = () => {
-        const itemsStarus = document.querySelectorAll(".guest__status");
-        if (itemsStarus) {
-            const counts = {};
-            itemsStarus.forEach((item => {
-                const content = item.textContent;
-                if (counts.hasOwnProperty(content)) counts[content]++; else counts[content] = 1;
-            }));
-            document.querySelector("#count1").textContent = counts["album"] || 0;
-            document.querySelector("#count2").textContent = counts["single"] || 0;
-            document.querySelector("#count3").textContent = counts["compilation"] || 0;
-        }
-    };
-    countFunc();
-    const statusFunc = () => {
-        const groupRadio = document.querySelector(".group-radio");
-        if (groupRadio) {
-            function filterByStatus(status) {
-                const items = document.querySelectorAll(".guest__item");
-                items.forEach((item => {
-                    const statusDiv = item.querySelector(".guest__status");
-                    if ("all" === status || statusDiv.textContent !== status) item.classList.add("hidden"); else item.classList.remove("hidden");
-                }));
+    sortListFunc();
+    const filterCheckboxFunc = () => {
+        const filterCheckboxes = document.getElementsByName("filter");
+        if (filterCheckboxes) {
+            function handleFilterChange() {
+                const selectedFilters = Array.from(filterCheckboxes).filter((checkbox => checkbox.checked)).map((checkbox => checkbox.value));
+                const items = document.getElementsByClassName("guest__item");
+                for (let i = 0; i < items.length; i++) {
+                    const item = items[i];
+                    const guestStatus = item.querySelector(".guest__status").textContent;
+                    if (0 === selectedFilters.length || selectedFilters.includes(guestStatus)) item.style.display = "flex"; else item.style.display = "none";
+                }
             }
-            const radioButtons = document.querySelectorAll('input[name="filter"]');
-            radioButtons.forEach((button => {
-                button.addEventListener("click", (() => {
-                    filterByStatus(button.value);
-                }));
-            }));
+            for (let i = 0; i < filterCheckboxes.length; i++) filterCheckboxes[i].addEventListener("change", handleFilterChange);
         }
     };
-    statusFunc();
+    filterCheckboxFunc();
 })();
