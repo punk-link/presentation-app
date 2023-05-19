@@ -2,21 +2,22 @@ package sharelinks
 
 import (
 	"fmt"
-	"main/constants"
 	"net/url"
+
+	presentationContractConstants "github.com/punk-link/presentation-contracts/constants"
 )
 
 func Generate(socialNetworkId string, ref string, text string) string {
 	switch socialNetworkId {
-	case constants.FACEBOOK:
+	case presentationContractConstants.FACEBOOK:
 		return buildFacebookLink(ref)
-	case constants.INSTAGRAM:
+	case presentationContractConstants.INSTAGRAM:
 		return buildFacebookLink(ref)
-	case constants.TELEGRAM:
+	case presentationContractConstants.TELEGRAM:
 		return buildTelegramLink(ref, text)
-	case constants.TWITTER:
+	case presentationContractConstants.TWITTER:
 		return buildTwitterLink(ref, text)
-	case constants.VK:
+	case presentationContractConstants.VK:
 		return buildVkLink(ref, text)
 	}
 

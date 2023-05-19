@@ -1,5 +1,6 @@
 {{ define "artist-social-networks.go.tmpl" }}
 <div class="guest__social">
+    {{ if ne (len .SocialNetworks ) 0 }}
     <div class="guest__social-title">
         Follow us:
     </div>
@@ -12,6 +13,7 @@
         </picture>
         {{ $id }}
     </a>
+    {{ end }}
     {{ end }}
 </div>
 {{ end }}

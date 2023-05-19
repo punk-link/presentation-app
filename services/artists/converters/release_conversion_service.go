@@ -26,19 +26,20 @@ func ToReleaseMap(hashCoder commonServices.HashCoder, dataService commonServices
 	title := fmt.Sprintf("%s – %s", release.Name, release.ReleaseArtists[0].Name)
 	tracks := toTrackMaps(hashCoder, release.Tracks, release.ReleaseArtists)
 
-	// TODO: add album and single numbers to ArtistStats
 	return dataService.Enrich(title, map[string]any{
-		"AlbumNumber":        int(release.ArtistStats.SoleReleaseNumber),
-		"Artists":            ToSlimArtistMaps(hashCoder, release.ReleaseArtists),
-		"CompilationNumber":  int(release.ArtistStats.CompilationNumber),
-		"Date":               release.ReleaseDate.AsTime().Year(),
-		"Description":        release.Description,
-		"ImageDetails":       toImageDetailsMap(release.ImageDetails),
+		"AlbumNumber":       int(release.ReleaseStats.AlbumNumber),
+		"Artists":           ToSlimArtistMaps(hashCoder, release.ReleaseArtists),
+		"CompilationNumber": int(release.ReleaseStats.CompilationNumber),
+		"Date":              release.ReleaseDate.AsTime().Year(),
+		"Description":       release.Description,
+		"ImageDetails":      toImageDetailsMap(release.ImageDetails),
+		//"Label":              release.Label,
 		"Name":               release.Name,
-		"SingleNumber":       0,
+		"PresentationConfig": release.PresentationConfig,
+		"SingleNumber":       int(release.ReleaseStats.SingleNumber),
+		"StreamingPlatforms": toPlatformUrlMaps(release.PlatformUrls),
 		"Tags":               release.Tags,
 		"Tracks":             tracks,
-		"StreamingPlatforms": toPlatformUrlMaps(release.PlatformUrls),
 	})
 }
 

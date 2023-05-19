@@ -59,21 +59,18 @@ func (t *ArtistService) Get(hash string) (map[string]any, error) {
 }
 
 func (t *ArtistService) buildArtistResult(err error, hashCoder commonServices.HashCoder, dataService commonServices.TemplateDataServer, artist *contracts.Artist, releases []*contracts.SlimRelease) (map[string]any, error) {
-	sortedReleases, albumNumber, singleNumber, compilationNumber, err := sortReleasesAndGetNumberByType(err, releases)
+	sortedReleases, err := sortReleasesAndGetNumberByType(err, releases)
 	if err != nil {
 		return make(map[string]any, 0), err
 	}
 
-	return converters.ToArtistMap(hashCoder, dataService, artist, sortedReleases, albumNumber, singleNumber, compilationNumber), nil
+	return converters.ToArtistMap(hashCoder, dataService, artist, sortedReleases), nil
 }
 
-func sortReleasesAndGetNumberByType(err error, releases []*contracts.SlimRelease) ([]*contracts.SlimRelease, int, int, int, error) {
+func sortReleasesAndGetNumberByType(err error, releases []*contracts.SlimRelease) ([]*contracts.SlimRelease, error) {
 	if err != nil {
-		return make([]*contracts.SlimRelease, 0), 0, 0, 0, err
+		return make([]*contracts.SlimRelease, 0), err
 	}
-
-	albumNumber := 0
-	singleNumber := 0
 
 	soleReleases := make([]*contracts.SlimRelease, 0)
 	compilations := make([]*contracts.SlimRelease, 0)
@@ -81,12 +78,6 @@ func sortReleasesAndGetNumberByType(err error, releases []*contracts.SlimRelease
 		if release.Type == platformContracts.Compilation {
 			compilations = append(compilations, release)
 		} else {
-			if release.Type == platformContracts.Album {
-				albumNumber++
-			} else {
-				singleNumber++
-			}
-
 			soleReleases = append(soleReleases, release)
 		}
 	}
@@ -94,7 +85,7 @@ func sortReleasesAndGetNumberByType(err error, releases []*contracts.SlimRelease
 	sortReleasesInternal(soleReleases)
 	sortReleasesInternal(compilations)
 
-	return append(soleReleases, compilations...), albumNumber, singleNumber, len(compilations), err
+	return append(soleReleases, compilations...), err
 }
 
 func sortReleasesInternal(releases []*contracts.SlimRelease) {
