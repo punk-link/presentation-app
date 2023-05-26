@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>guest</title>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- <link rel="shortcut icon" href="favicon.ico"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+
+<body>
+    <div class="wrapper __container">
+        <header class="header __container">
+            <div class="header__wrap ">
+                <div class="header__links">
+                    <a href="#" class="header__link">The Indeepandas<span class="dots"></span></a>
+                    <a href="#" class="header__link">King Gizzard & the Lizard Wizard</a>
+                    <a href="#" class="header__link">The Indeepandas</a>
+                </div>
+                <a class="logo" href="#">
+                    <picture>
+                        <source srcset="img/logo.webp" type="image/webp"><img src="img/logo.png" alt="logo" />
+                    </picture>
+                </a>
+                <button class="user"><img src="img/icons/icon-user.svg" alt="user" /></button>
+            </div>
+        </header>
+        <main class="page">
+            <!-- =======Section album============================ -->
+            <div class="album">
+                <div class="bg-decor">
+                    <picture>
+                        <source srcset="img/logosback.webp" type="image/webp"><img src="img/logosback.png"
+                            alt="декоративный элемент">
+                    </picture>
+                </div>
+                <div class="group-checkbox">
+                    <label>
+                        <input type="checkbox" name="filter" value="album" class="real-checkbox-btn">
+                        <span class="custom-checkbox-btn"></span>
+                        <span id="count1">0</span>
+                        albums
+                    </label>
+                    <label>
+                        <input type="checkbox" name="filter" value="single" class="real-checkbox-btn">
+                        <span class="custom-checkbox-btn"></span>
+                        <span id="count2">0</span>
+                        single
+                    </label>
+                    <label>
+                        <input type="checkbox" name="filter" value="compilation" class="real-checkbox-btn">
+                        <span class="custom-checkbox-btn"></span>
+                        <span id="count3">0</span>
+                        compilations
+                    </label>
+                </div>
+
+            </div>
+            <!-- ========Section lable-music==================== -->
+            <div class="lable-music scroll-content">
+                <div class="bg-nota">
+                    <picture>
+                        <source srcset="img/bg.webp" type="image/webp"><img src="img/bg.png" alt="декоративный элемент">
+                    </picture>
+                </div>
+                <div class="filter-guest">
+                    <div class="filter-guest__btn">
+                        sort by
+                    </div>
+                    <div class="filter-guest__list">
+                        <div class="filter-guest__item" id="sortDescBtn">
+                            <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M11.979 10.55L11.986 7H14L14 14H7V11.986L10.55 11.979L0 1.429L1.429 0L11.979 10.55Z"
+                                    fill="#9F9F9F" />
+                            </svg>
+                            year
+                        </div>
+                        <div class="filter-guest__item" id="sortAscBtn">
+                            <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M11.979 3.45L11.986 7H14L14 0H7V2.014L10.55 2.021L0 12.571L1.429 14L11.979 3.45Z"
+                                    fill="#9F9F9F" />
+                            </svg>
+                            year
+                        </div>
+                        <div class="filter-guest__item" id="sortA">
+                            <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M11.979 10.55L11.986 7H14L14 14H7V11.986L10.55 11.979L0 1.429L1.429 0L11.979 10.55Z"
+                                    fill="#9F9F9F" />
+                            </svg>a-z
+                        </div>
+                        <div class="filter-guest__item" id="sortZ">
+                            <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M11.979 3.45L11.986 7H14L14 0H7V2.014L10.55 2.021L0 12.571L1.429 14L11.979 3.45Z"
+                                    fill="#9F9F9F" />
+                            </svg>
+                            z-a
+                        </div>
+                    </div>
+                </div>
+                <ul class="guest sort__list">
+                    <li class="guest__item">
+                        <div class="guest__image">
+                            <picture>
+                                <source srcset="img/guest/2.webp" type="image/webp"><img src="img/guest/2.jpg" alt="">
+                            </picture>
+                        </div>
+                        <div class="guest__content">
+                            <div class="guest__year">2013</div>
+                            <h6 class="guest__title">Jaskdb lndcsd</h6>
+                            <div class="guest__status">single</div>
+                        </div>
+                    </li>
+                    <li class="guest__item">
+                        <div class="guest__image">
+                            <picture>
+                                <source srcset="img/guest/1.webp" type="image/webp"><img src="img/guest/1.jpg" alt="">
+                            </picture>
+                        </div>
+                        <div class="guest__content">
+                            <div class="guest__year">2022</div>
+                            <h6 class="guest__title">Planescape of Limits</h6>
+                            <div class="guest__status">album</div>
+                        </div>
+                    </li>
+                    <li class="guest__item">
+                        <div class="guest__image">
+                            <picture>
+                                <source srcset="img/guest/1.webp" type="image/webp"><img src="img/guest/1.jpg" alt="">
+                            </picture>
+                        </div>
+                        <div class="guest__content">
+                            <div class="guest__year">2015</div>
+                            <h6 class="guest__title">Jaskdb lndcsd</h6>
+                            <div class="guest__status">album</div>
+                        </div>
+                    </li>
+                    <li class="guest__item">
+                        <div class="guest__image">
+                            <picture>
+                                <source srcset="img/guest/1.webp" type="image/webp"><img src="img/guest/1.jpg" alt="">
+                            </picture>
+                        </div>
+                        <div class="guest__content">
+                            <div class="guest__year">2021</div>
+                            <h6 class="guest__title">Planescape</h6>
+                            <div class="guest__status">album</div>
+                        </div>
+                    </li>
+                    <li class="guest__item">
+                        <div class="guest__image">
+                            <picture>
+                                <source srcset="img/guest/3.webp" type="image/webp"><img src="img/guest/3.jpg" alt="">
+                            </picture>
+                        </div>
+                        <div class="guest__content">
+                            <div class="guest__year">2015</div>
+                            <h6 class="guest__title">Jaskdb lndcsd compilation</h6>
+                            <div class="guest__status">compilation</div>
+                        </div>
+                    </li>
+                    <li class="guest__item">
+                        <div class="guest__image">
+                            <picture>
+                                <source srcset="img/guest/2.webp" type="image/webp"><img src="img/guest/2.jpg" alt="">
+                            </picture>
+                        </div>
+                        <div class="guest__content">
+                            <div class="guest__year">2022</div>
+                            <h6 class="guest__title">APlanescape of Limits</h6>
+                            <div class="guest__status">single</div>
+                        </div>
+                    </li>
+                    <li class="guest__item">
+                        <div class="guest__image">
+                            <picture>
+                                <source srcset="img/guest/3.webp" type="image/webp"><img src="img/guest/3.jpg" alt="">
+                            </picture>
+                        </div>
+                        <div class="guest__content">
+                            <div class="guest__year">2015</div>
+                            <h6 class="guest__title">Jaskdb lndcsd</h6>
+                            <div class="guest__status">compilation</div>
+                        </div>
+                    </li>
+                    <li class="guest__item">
+                        <div class="guest__image">
+                            <picture>
+                                <source srcset="img/guest/3.webp" type="image/webp"><img src="img/guest/3.jpg" alt="">
+                            </picture>
+                        </div>
+                        <div class="guest__content">
+                            <div class="guest__year">2022</div>
+                            <h6 class="guest__title">Planescape of Limits</h6>
+                            <div class="guest__status">compilation</div>
+                        </div>
+                    </li>
+                    <li class="guest__item">
+                        <div class="guest__image">
+                            <picture>
+                                <source srcset="img/guest/3.webp" type="image/webp"><img src="img/guest/3.jpg" alt="">
+                            </picture>
+                        </div>
+                        <div class="guest__content">
+                            <div class="guest__year">2015</div>
+                            <h6 class="guest__title">Jaskdb lndcsd</h6>
+                            <div class="guest__status">compilation</div>
+                        </div>
+                    </li>
+                </ul>
+
+                <button class="share-link" data-modal-button="share">
+                    <picture>
+                        <source srcset="img/icons/icon-link.webp" type="image/webp"><img src="img/icons/icon-link.png"
+                            alt="share link" />
+                    </picture>share link
+                </button>
+            </div>
+
+            <!-- =============POPUP======================= -->
+            <div class="popup hidden" id="share-modal" data-modal>
+                <div class="popup__content">
+                    <div class="popup__body" style="background-image: url(img/nota-share.png);">
+                        <div class="popup__share" style="background-image: url(img/icons/share.png);">share</div>
+                        <div class="popup__media">
+                            <span>social media</span>
+                            <div class="popup__media-items">
+                                <a href="#" class="popup__media-item facebook"
+                                    style="background-image: url(img/icons/facebook.svg);"></a>
+                                <a href="#" class="popup__media-item instagram"
+                                    style="background-image: url(img/icons/instagram.svg);"></a>
+                                <a href="#" class="popup__media-item twitter"
+                                    style="background-image: url(img/icons/twitter.svg);"></a>
+                                <a href="#" class="popup__media-item vk"
+                                    style="background-image: url(img/icons/vk.svg);"></a>
+                            </div>
+                        </div>
+                        <div class="popup__link">
+                            <span>direct link</span>
+                            <div class="popup__link-text" id="text">https://synonim/album/24576419/track/110546552
+                                <button id="copy" style="background-image: url(img/icons/copy.png);">
+                                </button>
+                            </div>
+                            <div class="copy-link"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- =========Section sidebar========================= -->
+            <div class="sidebar">
+                <div class="guest__social">
+                    <div class="guest__social-title">Follow us:</div>
+                    <a href="#" class="social-list__item">
+                        <img src="img/icons/twit.svg" alt="twitter">twitter
+                    </a>
+                    <a href="#" class="social-list__item">
+                        <img src="img/icons/fb.svg" alt="facebook">facebook
+                    </a>
+                    <a href="#" class="social-list__item">
+                        <img src="img/icons/insta.svg" alt="facebook">instagram
+                    </a>
+                </div>
+            </div>
+        </main>
+        <footer class="footer">
+            <div class="footer__wrap">
+                <div class="footer__link">
+                    <a href="#">privacy policy</a>
+                    <a href="#">terms of condition</a>
+                    <a href="#">synonym.fans</a>
+                </div>
+                <a href="#" class="footer__copy">© South Chertanovo Records
+                    <span>2020–2022&nbsp;</span><span>| all rights reserved</span>
+                </a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>

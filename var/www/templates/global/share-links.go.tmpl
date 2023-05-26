@@ -1,14 +1,13 @@
 {{ define "global/share-links.go.tmpl" }}
 <button class="share-link" data-modal-button="share">
-    <picture>
-        <source srcset="/assets/img/icons/icon-link.webp" type="image/webp">
-        <img src="/assets/img/icons/icon-link.png" alt="share link" />
-    </picture>share link
+    
+        <img src="/assets/img/icons/icon-link.svg" alt="share link" />
+   share link
 </button>
 <div class="popup hidden" id="share-modal" data-modal>
     <div class="popup__content">
         <div class="popup__body" style="background-image: url(/assets/img/nota-share.png);">
-            <div class="popup__share" style="background-image: url(/assets/img/icons/share.png);">share</div>
+            <div class="popup__share" style="background-image: url(/assets/img/icons/share.svg);">share</div>
             <div class="popup__media">
                 <span>social media</span>
                 <div class="popup__media-items">
@@ -24,7 +23,7 @@
                 <span>direct link</span>
                 <div class="popup__link-text" id="text">
                     {{ generateShareLink "" .PageUrl .PageTitle }}
-                    <button id="copy" style="background-image: url(/assets/img/icons/copy.png);">
+                    <button id="copy" style="background-image: url(/assets/img/icons/copy.svg);">
                     </button>
                     <div class="copy-link"></div>
                 </div>

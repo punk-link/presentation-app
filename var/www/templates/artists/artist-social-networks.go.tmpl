@@ -7,10 +7,7 @@
     {{ range $id, $url := .SocialNetworks }}
     {{ $icon := getSocialNetworkIconPath $id }}
     <a href="{{ $url }}" class="social-list__item">
-        <picture>
-            <source srcset="/assets/img/icons/{{ $icon }}.webp" type="image/webp">
-            <img src="/assets/img/icons/{{ $icon }}.png" alt="{{ $id }}">
-        </picture>
+            <img src="/assets/img/icons/{{ $icon }}.svg" alt="{{ $id }}">
         {{ $id }}
     </a>
     {{ end }}

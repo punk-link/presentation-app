@@ -3,7 +3,7 @@
     const dotsFunc = () => {
         const dots = document.querySelector(".dots");
         if (dots) {
-            const links = document.querySelectorAll(".album__link");
+            const links = document.querySelectorAll(".header__link");
             if (links.length > 1) dots.style.display = "block";
             links.forEach((function (e, i) {
                 if (i > 0) e.classList.add("hidden");
@@ -11,20 +11,36 @@
             dots.addEventListener("click", (function () {
                 links.forEach((function (e, i) {
                     if (i > 0) e.classList.toggle("hidden");
-                    e.classList.add("more");
                 }));
             }));
         }
     };
     dotsFunc();
+    const paddingFunc = () => {
+        const dotsButton = document.querySelector(".dots");
+        if (dotsButton) {
+            const headerLinks = document.querySelector(".header__links");
+            const album = document.querySelector(".album");
+            function getHeight() {
+                setTimeout((() => {
+                    const height = headerLinks.clientHeight;
+                    console.log(height);
+                    album.style.paddingTop = `${height}px`;
+                }), 0);
+            }
+            dotsButton.addEventListener("click", getHeight);
+        }
+    };
+    paddingFunc();
     const headerScrollFunc = () => {
         const scrollContent = document.querySelector(".scroll-content");
         if (scrollContent) {
-            const header = document.querySelector("header");
-            const initialHeaderPosition = header.offsetTop;
+            const header = document.querySelector(".header");
+            let prevScrollPos = scrollContent.scrollTop;
             scrollContent.addEventListener("scroll", (function () {
-                const scrolledPixels = scrollContent.scrollTop;
-                header.style.top = initialHeaderPosition - scrolledPixels + "px";
+                const currentScrollPos = scrollContent.scrollTop;
+                header.style.transform = 0 === currentScrollPos || currentScrollPos < 24 ? "translateY(0)" : "translateY(-24px)";
+                prevScrollPos = currentScrollPos;
             }));
         }
     };

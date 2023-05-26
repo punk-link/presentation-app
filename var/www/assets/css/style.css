@@ -178,22 +178,115 @@ body {
 
 .header {
   position: absolute;
-  left: 35.5%;
-  min-height: 130px;
-  z-index: 3;
+  top: 24px;
+  z-index: 10;
+  width: 100%;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .header__wrap {
-  padding: 68px 30px 33px 30px;
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: "links logo user";
+  -ms-grid-columns: 2.2fr 3fr 1fr;
+  grid-template-columns: 2.2fr 3fr 1fr;
+  height: 86px;
+  padding-bottom: 12px;
 }
 
 .logo {
-  width: 185px;
-  display: block;
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  background: rgba(242, 255, 225, 0.7);
+  padding-top: 43px;
+  grid-area: logo;
+  height: 86px;
 }
 
 .logo img {
-  max-width: 100%;
+  display: block;
+  width: 185px;
+  margin: 10px 0 0 33px;
+}
+
+.user {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  grid-area: user;
+  height: 100%;
+  margin: 8px auto 4px 26px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 43px;
+}
+
+.user img {
+  width: 20px;
+  height: 20px;
+  -webkit-transition: all 0.1s ease-out 0s;
+  -o-transition: all 0.1s ease-out 0s;
+  transition: all 0.1s ease-out 0s;
+}
+
+.header__links {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  padding-top: 43px;
+  padding-bottom: 30px;
+  grid-area: links;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  max-width: 35.5%;
+  position: absolute;
+}
+
+.header__links a {
+  position: relative;
+  padding: 0 35px 0 0;
+  margin-bottom: 12px;
+}
+
+.header__links:nth-child(1) {
+  font-size: 2rem;
+  padding-left: 30px;
+}
+
+.header__links:nth-child(1)::before {
+  content: "";
+  background-image: url(../img/icons/icon-arrow.svg);
+  position: absolute;
+  top: 48px;
+  left: -2px;
+  width: 22px;
+  height: 22px;
+  -webkit-transition: all 0.1s ease-out 0s;
+  -o-transition: all 0.1s ease-out 0s;
+  transition: all 0.1s ease-out 0s;
+}
+
+.header__links .dots {
+  display: none;
+  width: 22px;
+  height: 22px;
+  background-image: url(../img/icons/dots.svg);
+  position: absolute;
+  top: 9px;
+  right: 10px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.hidden {
+  display: none;
 }
 
 .footer {
@@ -227,73 +320,14 @@ body {
   grid-template-columns: 2.2fr 3fr 1fr;
 }
 
-.hidden {
-  display: none;
-}
-
-.more {
-  position: absolute;
-}
-
 .album {
   -ms-grid-row: 1;
   -ms-grid-row-span: 3;
   -ms-grid-column: 1;
   grid-area: album;
-  padding: 60px 0 120px 30px;
+  padding: 142px 0 120px 30px;
   position: relative;
   z-index: 1;
-}
-
-.album__links {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  padding: 0 60px 30px 0;
-  position: relative;
-}
-
-.album__links .dots{
-  background-image: url(../img/icons/dots.png); }
-
-.album__links .dots {
-  display: none;
-  width: 22px;
-  height: 22px;
-  position: absolute;
-  top: 9px;
-  right: 28px;
-  cursor: pointer;
-  z-index: 10;
-}
-
-.album__link {
-  font-size: 2rem;
-  padding-bottom: 10px;
-  position: relative;
-}
-
-.album__link:nth-child(2) {
-  padding-right: 10px;
-}
-
-.album__link:nth-child(2)::before{
-  background-image: url(../img/icons/icon-arrow.png); }
-
-.album__link:nth-child(2)::before {
-  content: "";
-  position: absolute;
-  top: 6px;
-  left: -30px;
-  width: 22px;
-  height: 22px;
-  -webkit-transition: all 0.1s ease-out 0s;
-  -o-transition: all 0.1s ease-out 0s;
-  transition: all 0.1s ease-out 0s;
 }
 
 .album__img {
@@ -512,7 +546,7 @@ body {
       -ms-flex-align: center;
           align-items: center;
   padding: 10px 32px 10px 20px;
-  margin: 90px 0 100px 0;
+  margin: 73px 0 180px 0;
   -webkit-transition: all 0.1s ease-out 0s;
   -o-transition: all 0.1s ease-out 0s;
   transition: all 0.1s ease-out 0s;
@@ -667,21 +701,6 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-}
-
-.user {
-  position: absolute;
-  left: 26px;
-  top: 57px;
-  padding: 8px 0 0 0;
-}
-
-.user img {
-  width: 20px;
-  height: 20px;
-  -webkit-transition: all 0.1s ease-out 0s;
-  -o-transition: all 0.1s ease-out 0s;
-  transition: all 0.1s ease-out 0s;
 }
 
 .tags {
@@ -967,7 +986,7 @@ body {
 .guest__title {
   font-size: 24px;
   font-weight: 700;
-  padding: 14px 5px 24px 0;
+  padding: 14px 10px 24px 0;
 }
 
 .guest__status {
@@ -976,7 +995,7 @@ body {
 }
 
 .guest__social {
-  padding: 342px 0 0 40px;
+  padding: 170px 0 0 26px;
 }
 
 .guest__social .social-list__item {
@@ -986,7 +1005,7 @@ body {
 .guest__social-title {
   font-size: 10px;
   color: #9f9f9f;
-  padding-bottom: 28px;
+  padding-bottom: 22px;
 }
 
 .filter-guest {
@@ -1013,17 +1032,15 @@ body {
       -ms-flex-align: center;
           align-items: center;
   gap: 10px;
-  margin-bottom: 58px;
+  margin-bottom: 50px;
   cursor: pointer;
   position: relative;
   padding-left: 32px;
 }
 
-.filter-guest__btn::before{
-  background-image: url(../img/icons/icon-arrow.png); }
-
 .filter-guest__btn::before {
   content: "";
+  background-image: url(../img/icons/icon-arrow.svg);
   position: absolute;
   top: 0;
   left: 0;
@@ -1113,7 +1130,16 @@ body {
 }
 
 @media (any-hover: hover) and (any-pointer: fine) {
-  .album__link:nth-child(2):hover::before {
+  .user img:hover {
+    -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+            transform: scale(1.1);
+    -webkit-transition: all 0.1s ease-out 0s;
+    -o-transition: all 0.1s ease-out 0s;
+    transition: all 0.1s ease-out 0s;
+  }
+
+  .header__links:nth-child(1):hover::before {
     -webkit-transform: scale(1.1);
         -ms-transform: scale(1.1);
             transform: scale(1.1);
@@ -1164,15 +1190,6 @@ body {
   }
 
   .form__button:hover {
-    -webkit-transform: scale(1.1);
-        -ms-transform: scale(1.1);
-            transform: scale(1.1);
-    -webkit-transition: all 0.1s ease-out 0s;
-    -o-transition: all 0.1s ease-out 0s;
-    transition: all 0.1s ease-out 0s;
-  }
-
-  .user img:hover {
     -webkit-transform: scale(1.1);
         -ms-transform: scale(1.1);
             transform: scale(1.1);
