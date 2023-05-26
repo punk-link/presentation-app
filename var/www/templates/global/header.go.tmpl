@@ -2,19 +2,19 @@
 <header class="header">
     <div class="header__wrap">
        <div class="header__links">
-         {{ range .Artists }}
-        <a href="/artists/{{ .Slug }}" class="header__link">{{ .Name }} <span class="dots"></span></a>
+        {{ range .Artists }}
+            <a href="/artists/{{ .Slug }}" class="header__link">{{ .Name }} <span class="dots"></span></a>
         {{ end }}
-      </div>
+        </div>
         <a class="logo" href="/">
             <picture>
                 <source srcset="/assets/img/logo.webp" type="image/webp">
                 <img src="/assets/img/logo.png" alt="Synonym" />
             </picture>
         </a>
-        {{ template "global/login-icon.go.tmpl" . }}
+        <a class="user" href="{{ .ManagementAppEndpoint }}">
+            <img src="/assets/img/icons/icon-user.svg" alt="log-in" />
+        </a>
     </div>
 </header>
 {{ end }}
-
-       
