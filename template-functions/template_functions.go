@@ -8,17 +8,17 @@ import (
 func GetPlatformIconPath(platformId string) string {
 	switch platformId {
 	case platformContracts.AppleMusic:
-		return "AppleMusic.webp"
+		return "AppleMusic.svg"
 	case platformContracts.Deezer:
-		return "Deezer.webp"
+		return "Deezer.svg"
 	case platformContracts.Spotify:
-		return "Spotyfy.webp"
+		return "Spotyfy.svg"
 	case platformContracts.Uma:
-		return "VKMusic.webp"
+		return "VKMusic.svg"
 	case platformContracts.YandexMusic:
-		return "YandexMusic.webp"
+		return "YandexMusic.svg"
 	case platformContracts.YouTubeMusic:
-		return "YouTube.webp"
+		return "YouTube.svg"
 	}
 
 	return ""
@@ -56,9 +56,9 @@ func GetReleaseTypeId(releaseType string) string {
 func GetSocialNetworkIconPath(socialNetworkId string) string {
 	switch socialNetworkId {
 	case presentationContractConstants.FACEBOOK:
-		return "fb"
+		return "facebook"
 	case presentationContractConstants.INSTAGRAM:
-		return "insta"
+		return "instagram"
 	case presentationContractConstants.TELEGRAM:
 		return "telegram"
 	case presentationContractConstants.TWITTER:
